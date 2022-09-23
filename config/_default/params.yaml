@@ -20,18 +20,18 @@ twitter: ''
 
 # Contact (edit or remove options as required)
 
-email: randyardywibowo@tamu.edu
+email: ardywibowo.randy@gmail.com
 phone: +1-661-863-8472
 address:
-  street: Wisenbaker Engineering Building 3128, 188 Bizzell St
-  city: College Station
-  region: TX
-  postcode: '77843'
+  street: One Apple Park Way
+  city: Cupertino
+  region: CA
+  postcode: '95014'
   country: United States
   country_code: US
 coordinates:
-  latitude: '30.6208'
-  longitude: '-96.3389'
+  latitude: '37.3346'
+  longitude: '-122.0090'
 directions: 
 office_hours:
   - 'Weekdays 10:00 to 13:00 CDT'
