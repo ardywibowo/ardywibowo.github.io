@@ -29,7 +29,7 @@ experience:
     location: Cupertino, California
     date_start: '2022-08-22'
     date_end: ''
-    description: Machine learning, search engines, geospatial and geolocation
+    description: Machine learning, search engines, geospatial data analysis
 
   - title: Graduate Researcher
     company: Texas A&M University
