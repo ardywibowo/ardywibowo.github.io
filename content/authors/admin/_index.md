@@ -11,12 +11,13 @@ social:
   - icon: linkedin
     icon_pack: fab
     link: https://www.linkedin.com/in/ardywibowo/
-  - icon: github
-    icon_pack: fab
-    link: https://github.com/ardywibowo
   - icon: graduation-cap
     icon_pack: fas
     link: https://scholar.google.com/citations?user=NnAqNsYAAAAJ&hl=en
+  - icon: github
+    icon_pack: fab
+    link: https://github.com/ardywibowo
+  
 # organizations:
 #   - name: 
 #     url: https://www.tamu.edu/
