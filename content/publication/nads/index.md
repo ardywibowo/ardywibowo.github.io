@@ -13,7 +13,7 @@ authors:
 author_notes: []
 publication: In International Conference on Machine Learning
 summary: ""
-publication_short: In ICML
+publication_short: ICML 2020
 title: >-
   NADS: Neural Architecture Distribution Search for Uncertainty Awareness
 doi: ""
