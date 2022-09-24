@@ -2,11 +2,11 @@
 widget: pages
 widget_id: recent-posts
 headless: true
-weight: 24
-title: Recent Posts
+weight: 23
+title: Recent & Upcoming Talks
 subtitle: null
 content:
-  page_type: post
+  page_type: event
   count: 5
   filters:
     author: ""
