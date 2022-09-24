@@ -37,7 +37,7 @@ experience:
     company_logo: tamu
     location: College Station, Texas
     date_start: '2017-09-01'
-    date_end: ''
+    date_end: '2022-08-22'
     description: Uncertainty quantification for outlier detection, robust prediction, adaptive monitoring, model compression, and continual learning.
 
   - title: Intern
