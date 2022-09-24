@@ -3,7 +3,7 @@ abstract: 'A method performed by a deep neural network (DNN) includes receiving,
 url_pdf: https://patents.google.com/patent/US20220101133A1/en
 title: "Dynamic quantization for energy efficient deep learning"
 publication_types:
-  - "3"
+  - "8"
 authors:
   - admin
   - Venkata Ravi Kiran Dayana

@@ -3,7 +3,7 @@ abstract: 'Continual Learning (CL) is the problem of sequentially learning a set
 url_pdf: https://proceedings.mlr.press/v162/ardywibowo22a.html
 title: "VariGrow: Variational Architecture Growing for Task-Agnostic Continual Learning based on Bayesian Novelty"
 publication_types:
-  - "3"
+  - "1"
 authors:
   - admin
   - Zepeng Huo

@@ -3,7 +3,7 @@ abstract: 'In many machine learning tasks, input features with varying degrees o
 url_pdf: https://proceedings.mlr.press/v151/ardywibowo22a/ardywibowo22a.pdf
 title: "VFDS: Variational Foresight Dynamic Selection in Bayesian Neural Networks"
 publication_types:
-  - "3"
+  - "1"
 authors:
   - admin
   - Shahin Boluki
