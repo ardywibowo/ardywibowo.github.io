@@ -1,30 +1,22 @@
 ---
 title: Randy Ardywibowo
-role: PhD Candidate in Electrical Engineering
+role: Machine Learning @ Apple
 avatar_filename: avatar.jpg
-bio: I am interested in Uncertainty Quantification (UQ) for Machine Learning (ML) and it's various applications
+bio: I am interested in knowledge graphs and uncertainty quantification for Machine Learning (ML) and it's various applications.
 interests:
+  - Knowledge graphs
+  - Data Sampling
   - Uncertainty quantification
-  - Energy-efficient ML
-  - Anomaly detection
-  - Continual learning
-  - Deep model compression
 social:
-  - icon: envelope
-    icon_pack: fas
-    link: /#contact
-  - icon: twitter
-    icon_pack: fab
-    link: https://twitter.com/rendope
-  - icon: graduation-cap
-    icon_pack: fas
-    link: https://scholar.google.com/citations?user=NnAqNsYAAAAJ&hl=en
-  - icon: github
-    icon_pack: fab
-    link: https://github.com/ardywibowo
   - icon: linkedin
     icon_pack: fab
     link: https://www.linkedin.com/in/ardywibowo/
+  - icon: github
+    icon_pack: fab
+    link: https://github.com/ardywibowo
+  - icon: graduation-cap
+    icon_pack: fas
+    link: https://scholar.google.com/citations?user=NnAqNsYAAAAJ&hl=en
 organizations:
   - name: Texas A&M University
     url: https://www.tamu.edu/
