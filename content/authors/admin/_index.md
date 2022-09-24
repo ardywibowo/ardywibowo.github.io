@@ -1,5 +1,5 @@
 ---
-title: Randy Ardywibowo
+title: Randy Ardywibowo, Ph.D.
 role: ML/AI
 avatar_filename: avatar.jpg
 bio: I am interested in knowledge graphs and uncertainty quantification for Machine Learning (ML) and it's various applications.
@@ -22,7 +22,7 @@ social:
 #     url: https://www.tamu.edu/
 education:
   courses:
-    - course: PhD in Electrical Engineering
+    - course: Electrical Engineering, Ph.D.
       institution: Texas A&M University
       year: 2022
 email: "ardywibowo.randy@gmail.com"
@@ -31,7 +31,7 @@ highlight_name: false
 ---
 My current interests is on data sampling, knowledge graphs, and information retrieval.
 
-I received my PhD in Electrical Engineering at Texas A&M University under the supervision of Dr. Xiaoning Qian. During my studies, I researched uncertainty quantification in machine learning, with applications to time-series prediction, computer vision, energy-efficient ML, anomaly detection, continual learning, deep model compression, and healthcare.
+I received my doctorate in Electrical Engineering at Texas A&M University under the supervision of Dr. Xiaoning Qian. During my studies, I researched uncertainty quantification in machine learning, with applications to time-series prediction, computer vision, energy-efficient ML, anomaly detection, continual learning, deep model compression, and healthcare monitoring.
 
 I am currently building Machine Learning algorithms @ Apple Inc. 
 
