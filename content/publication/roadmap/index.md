@@ -9,15 +9,15 @@ slides: ""
 publication_types:
   - "2"
 authors:
-  - Jiang, Ziyu 
-  - Ardywibowo, Randy 
-  - Samereh, Aven
-  - Evans, Heather L
-  - Lober, William B
-  - Chang, Xiangyu
-  - Qian, Xiaoning
-  - Wang, Zhangyang
-  - Huang, Shuai
+  - Ziyu Jiang 
+  - admin
+  - Aven Samereh
+  - Heather L. Evans
+  - William B. Lober
+  - Xiangyu Chang
+  - Xiaoning Qian
+  - Zhangyang Wang
+  - Shuai Huang
 author_notes: []
 publication: Surgical Infections 2019
 summary: ""
