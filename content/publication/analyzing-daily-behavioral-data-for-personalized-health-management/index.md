@@ -10,7 +10,7 @@ authors:
 author_notes: []
 publication: In Undergraduate Research Scholars Capstone (2006–present)
 summary: ""
-publication_short: In UGRS Capstone
+publication_short: Undergraduate Thesis 2017
 title: Analyzing Daily Behavioral Data for Personalized Health Management
 doi: ""
 featured: false

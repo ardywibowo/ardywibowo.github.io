@@ -13,7 +13,7 @@ authors:
 author_notes: []
 publication: In International Conference on Artificial Intelligence and Statistics
 summary: ""
-publication_short: In AISTATS
+publication_short: AISTATS 2020
 title: >-
   Learnable Bernoulli Dropout for Bayesian Deep Learning
 doi: ""

@@ -19,9 +19,9 @@ authors:
   - Wang, Zhangyang
   - Huang, Shuai
 author_notes: []
-publication: In Surgical infections
+publication: Surgical Infections 2019
 summary: ""
-publication_short: In Surgical infections
+publication_short: Surgical Infections 2019
 title: >-
   A Roadmap for Automatic Surgical Site Infection Detection and Evaluation Using User-Generated Incision Images
 doi: "10.1089/sur.2019.154"

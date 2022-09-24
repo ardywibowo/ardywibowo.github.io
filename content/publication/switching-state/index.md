@@ -15,7 +15,7 @@ authors:
 author_notes: []
 publication: In Journal of Healthcare Informatics Research
 summary: ""
-publication_short: In JHIR
+publication_short: JHIR 2018
 title: Switching-State Dynamical Modeling of Daily Behavioral Data
 doi: 10.1007/s41666-018-0017-x
 featured: false

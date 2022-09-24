@@ -14,7 +14,7 @@ authors:
 author_notes: []
 publication: In The 22nd International Conference on Artificial Intelligence and Statistics
 summary: ""
-publication_short: In AISTATS
+publication_short: AISTATS 2019
 title: >-
   Adaptive Activity Monitoring with Uncertainty Quantification in Switching Gaussian Process Models
 doi: ""
