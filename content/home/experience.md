@@ -44,7 +44,7 @@ experience:
     company: Qualcomm
     company_url: ''
     company_logo: qualcomm
-    location: San Diego, California (remote)
+    location: San Diego, California
     date_start: '2020-05-09'
     date_end: '2020-08-31'
     description: Dynamic deep learning model compression.

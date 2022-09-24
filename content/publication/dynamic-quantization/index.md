@@ -29,5 +29,5 @@ date: 2022-03-31T00:00:00.000Z
 url_slides: ""
 publishDate: 2022-03-31T00:00:00.000Z
 url_poster: ""
-url_code: https://patents.google.com/patent/US20220101133A1/en
+url_code: ""
 ---
