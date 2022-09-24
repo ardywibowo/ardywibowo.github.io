@@ -25,9 +25,6 @@ education:
     - course: PhD in Electrical Engineering
       institution: Texas A&M University
       year: 2022
-    - course: B.Sc. in Electrical Engineering
-      institution: Texas A&M University
-      year: 2017
 email: "ardywibowo.randy@gmail.com"
 superuser: true
 highlight_name: false
