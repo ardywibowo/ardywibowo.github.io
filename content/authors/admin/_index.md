@@ -1,6 +1,6 @@
 ---
-title: Randy Ardywibowo, Ph.D.
-role: ML/AI
+title: Randy Ardywibowo
+role: Ph.D.
 avatar_filename: avatar.jpg
 bio: I am interested in knowledge graphs and uncertainty quantification for Machine Learning (ML) and it's various applications.
 interests:
