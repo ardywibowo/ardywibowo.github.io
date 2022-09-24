@@ -33,8 +33,6 @@ coordinates:
   latitude: '37.3346'
   longitude: '-122.0090'
 directions: 
-office_hours:
-  - 'Weekdays 10:00 to 13:00 CDT'
 contact_links:
   - icon: twitter
     icon_pack: fab
