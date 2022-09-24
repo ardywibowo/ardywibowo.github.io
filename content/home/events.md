@@ -3,7 +3,7 @@ widget: pages
 widget_id: recent-posts
 headless: true
 weight: 23
-title: Recent & Upcoming Talks
+title: Talks
 subtitle: null
 content:
   page_type: event
