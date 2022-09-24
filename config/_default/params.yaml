@@ -21,7 +21,6 @@ twitter: ''
 # Contact (edit or remove options as required)
 
 email: ardywibowo.randy@gmail.com
-phone: +1-661-863-8472
 address:
   street: One Apple Park Way
   city: Cupertino
@@ -32,12 +31,7 @@ address:
 coordinates:
   latitude: '37.3346'
   longitude: '-122.0090'
-directions: 
-contact_links:
-  - icon: twitter
-    icon_pack: fab
-    name: Twitter
-    link: 'https://twitter.com/rendope'
+directions:
 
 # Site header
 
