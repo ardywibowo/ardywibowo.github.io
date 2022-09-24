@@ -1,5 +1,5 @@
 ---
-title: Bayesian Methods in Continual Learning
+title: Machine Learning under Uncertainty and Irregularity
 
 event: Consulate General of Indonesia
 event_url:
