@@ -2,11 +2,11 @@
 title: Randy Ardywibowo
 role: Ph.D.
 avatar_filename: avatar.jpg
-bio: I am interested in knowledge graphs and uncertainty quantification for Machine Learning (ML) and it's various applications.
+bio: I am interested in contextual bandits, sampling techniques & applications, and language understanding.
 interests:
-  - Knowledge graphs
-  - Data Sampling
-  - Uncertainty quantification
+  - Contextual Bandits
+  - Sampling Techniques & Applications
+  - Language Understanding
 social:
   - icon: linkedin
     icon_pack: fab
@@ -30,7 +30,7 @@ email: "ardywibowo.randy@gmail.com"
 superuser: true
 highlight_name: false
 ---
-My current interests is on data sampling, knowledge graphs, and information retrieval.
+My current interests is on contextual bandits, sampling techniques & applications, and language understanding.
 
 I received my doctorate in Electrical Engineering at Texas A&M University under the supervision of Dr. Xiaoning Qian. During my studies, I researched uncertainty quantification in machine learning, with applications to time-series prediction, computer vision, energy-efficient ML, anomaly detection, continual learning, deep model compression, and healthcare monitoring.
 
