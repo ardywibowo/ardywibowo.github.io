@@ -142,7 +142,7 @@ It's also nice because to get the rate, we can just exponentiate the logits:
 
 <center>
 
-$\beta = \frac{p}{1 + p} = \frac{\sigma(z)}{1 + \sigma(z)} = \frac{1}{1 + e^{-z}} \frac{e^{z}}{1 + e^{z}} = e^{z}$
+$\beta = \frac{p}{1 - p} = \frac{\sigma(z)}{1 - \sigma(z)} = \frac{1}{1 + e^{-z}} \frac{e^{z}}{1 + e^{z}} = e^{z}$
 
 </center>
 
