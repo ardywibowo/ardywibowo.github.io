@@ -78,7 +78,9 @@ The log-likelihood of this distribution is:
 
 <center>
 
-$\log{f_{GammaPoi}(x)} = - \log{x!} + \log{\Gamma(x + \alpha)} - \log{\Gamma(\alpha)} + \alpha\log{\sigma(z)} + x\log{(1 - \sigma(z))}$
+$\log{f_{GammaPoi}(x)} = - \log{x!} + \log{\Gamma(x + \alpha)} - \log{\Gamma(\alpha)}$ 
+
+$+ \alpha\log{\sigma(z)} + x\log{(1 - \sigma(z))}$
 
 </center>
 
