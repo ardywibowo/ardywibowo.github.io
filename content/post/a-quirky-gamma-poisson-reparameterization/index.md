@@ -34,7 +34,7 @@ $\quad = \frac{\beta^{\alpha}}{x!\Gamma(\alpha)}\int_{0}^{\infty}{\lambda^{x + \
 
 </center>
 
-Notice here that the integral looks almost like a Gamma distribution, but with a different scale parameter (**shape** = $x + \alpha$) and (**rate** = $1 + \beta$). It's just missing a few constants. Since the integral of a probability distribution must be 1, we can just multiply and divide by the missing constants $\frac{\Gamma(x + \alpha)}{(1 + \beta)^{x + \alpha}}$ to get:
+Notice here that the integral looks almost like a Gamma distribution, but with different (**shape** = $x + \alpha$) and (**rate** = $1 + \beta$) parameters. It's also missing a few constants. Since the integral of a probability distribution must be 1, we can just multiply and divide by the missing constants $\frac{\Gamma(x + \alpha)}{(1 + \beta)^{x + \alpha}}$ to get:
 
 <center>
 
@@ -50,7 +50,7 @@ $f_{GammaPoi}(x) = \frac{\Gamma(x + \alpha)}{x!\Gamma(\alpha)}\left(\frac{\beta}
 
 </center>
 
-Notice that I separated the term with $\beta$ and $1 + \beta$ into two terms. I did this to show more clearly the relationship between the Gamma-Poisson and the Negative Binomial distribution. Rearranging like this, we can see that the Negative Binomial distribution and Gamma-Poisson distribution are related as $\alpha = r$ and $\frac{\beta}{1 + \beta} = p$. It is defined as:
+Notice that I separated the term with $\beta$ and $1 + \beta$ into two terms. I did this to show more clearly that the Gamma-Poisson and the Negative Binomial distribution are very closely related. Rearranging it like this, we can see that the Negative Binomial distribution and Gamma-Poisson distribution are related as $\alpha = r$ and $\frac{\beta}{1 + \beta} = p$. It is defined as:
 
 <center>
 
