@@ -18,7 +18,7 @@ I have recently been experimenting with Bayesian models of count data using Gamm
 
 First of all, documentation on Gamma distributions are messy, not only are there different reparameterizations (scale vs. rate), sometimes both parameterizations used the same symbols! Not to mention some formulas are not even correct (Looking at [this wrong reference](https://www.math.wm.edu/~leemis/chart/UDR/PDFs/Gammapoisson.pdf). Here $\alpha$ and $\beta$ should be switched).
 
-I've finally found a good reference in [This](https://www.youtube.com/watch?v=B7pQpW6-id0) video. It explains it super clearly, and clarifies whether he's using the scale or rate parameterization, and links it to the Negative Binomial distribution. Turns out, besides using scale or rate, there's a quirky third reparameterization that I didn't know about. Let's write down the pdf of the Poisson-Gamma distribution. It's just a mixture of Poisson distributions with parameter $\lambda$ drawn from a Gamma distribution with parameters (**shape** = $\alpha$) and (**rate** = $\beta$):
+Let's develop a good parameterization from first principles. Turns out, besides using scale or rate, there's a quirky third reparameterization that's far superior to all others. To get at it, let's first write down the pdf of the Poisson-Gamma distribution. It's just a mixture of Poisson distributions with parameter $\lambda$ drawn from a Gamma distribution with parameters (**shape** = $\alpha$) and (**rate** = $\beta$):
 
 <center>
 
