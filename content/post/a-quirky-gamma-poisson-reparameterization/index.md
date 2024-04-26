@@ -74,7 +74,15 @@ $f_{GammaPoi}(x) = \frac{\Gamma(x + \alpha)}{x!\Gamma(\alpha)}\sigma(z)^{\alpha}
 
 </center>
 
-Notice that the second term is just a Bernoulli distribution, with log likelihood:
+The log likelihood of this distribution is:
+
+<center>
+
+$\log{f_{GammaPoi}(x)} = - \log{x!} + \log{\Gamma(x + \alpha)} - \log{\Gamma(\alpha)} + \alpha\log{\sigma(z)} + x\log{(1 - \sigma(z))}$
+
+</center>
+
+Notice that the two last terms looks like Binary Cross Entropy (BCE)!
 
 <center>
 
@@ -82,31 +90,35 @@ $\alpha\log{\sigma(z)} + x\log{(1 - \sigma(z))}$
 
 </center>
 
-This looks like Binary Cross Entropy! Specifically, after further reparameterizing $\alpha$ into $\log(\alpha)$, the input logits, targets, and weights are:
+Specifically, after further reparameterizing the shape $\alpha$ as log shape $\log(\alpha)$, the input logits, targets, and weights to the BCE are:
 
 - Logits: $z$
-- Targets: $\frac{\alpha}{x + \alpha} = \text{Softmax}(\log(\alpha), \log(x))$
+
+- Targets: $\frac{\alpha}{x + \alpha} = \text{Softmax}(\log(\alpha), \log(x))[0]$
+
 - Weights: $x + \alpha$
 
 We can just use the Binary Cross Entropy loss function `BCEWithLogitsLoss` for half of the Poisson-Gamma likelihood computation:
 
 <center>
 
-$\alpha\log{\sigma(z)} + x\log{(1 - \sigma(z))}$ `= - (x + alpha) BCEWithLogitsLoss(z, alpha / (x + alpha))`
+$\alpha\log{\sigma(z)} + x\log{(1 - \sigma(z))}$ 
+
+`= - (x + alpha) BCEWithLogitsLoss(z, alpha / (x + alpha))`
 
 </center>
 
 Meanwhile, the other half can just be computed using `torch.lgamma()` functions. The full Poisson-Gamma likelihood computation is:
 
 ```python
-def gamma_poisson_loss(self, log_concentration, logits, value):
+def gamma_poisson_loss(self, log_shape, logits, value):
     eps = 1e-8
-    concentration = torch.exp(log_concentration)
+    concentration = torch.exp(log_shape)
     
     log_value = torch.log(value + eps)
     targets = torch.softmax(
         torch.stack(
-            [log_concentration, log_value], dim=-1
+            [log_shape, log_value], dim=-1
         ), 
         dim=-1
     )[..., 0]
@@ -130,7 +142,7 @@ It's also nice because to get the rate, we can just exponentiate the logits:
 
 <center>
 
-$\beta = e^{z}$
+$\beta = \frac{p}{1 + p} = \frac{\sigma(z)}{1 + \sigma(z)} = \frac{1}{1 + e^{-z}} \frac{e^{z}}{1 + e^{z}} = e^{z}$
 
 </center>
 
