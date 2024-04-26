@@ -14,11 +14,11 @@ projects = []
 <!-- Header Image here -->
 ![image](gamma-poisson.png)
 
-I have recently been studying Bayesian models for count data using Gamma-Poisson distributions. The objective was simple, using auxiliary features, use a neural network to predict the parameters of the Gamma distribution, and then use the Gamma distribution as a prior for the count data. The issue arises when trying to actually implement it. Any naive reparameterization I tried (using `torch.log`, adding epsilons everywhere, normalizing the count data, etc.) didn't work. I needed to understand the Gamma distribution better.
+I've been studying Bayesian models for count data using Gamma-Poisson distributions. The objective was simple, using auxiliary features, use a neural network to predict the parameters of the Gamma distribution, and then use the Gamma distribution as a prior for the count data. The issue arises when trying to actually implement it. Any naive reparameterization I tried (using `torch.log`, adding epsilons everywhere, normalizing the count data, etc.) didn't work, and training a neural network always resulted in exploding gradients. I needed to understand the Gamma-Poisson distribution better.
 
-First of all, documentation on Gamma distributions are messy, not only are there different reparameterizations (scale vs. rate), sometimes people use the same symbols for different parameterizations! Not to mention some references just get it wrong and the formulas are not even correct ([Look at this](https://www.math.wm.edu/~leemis/chart/UDR/PDFs/Gammapoisson.pdf). Here $\alpha$ and $\beta$ should be switched).
+First of all, documentation on Gamma distributions are messy, not only are there different reparameterizations (scale vs. rate), sometimes people use the same symbols for different parameterizations and don't tell you which ones they're using! Not to mention some references just get it wrong and the formulas are not even correct ([Look at this](https://www.math.wm.edu/~leemis/chart/UDR/PDFs/Gammapoisson.pdf). Here $\alpha$ and $\beta$ should be switched. yikes).
 
-Let's develop a good parameterization from first principles. Turns out, besides using scale or rate, there's a quirky third reparameterization that's far superior to all others (in my opinion). Not sure if it's been done before, but I haven't seen it anywhere, so I'm posting it here. To get at it, let's first write down the pdf of the Poisson-Gamma distribution. It's just a mixture of Poisson distributions with parameter $\lambda$ drawn from a Gamma distribution with parameters (**shape** = $\alpha$) and (**rate** = $\beta$):
+Let's develop a good parameterization from first principles. Turns out, besides using scale or rate, there's a quirky third reparameterization that's far superior to all others (in my opinion). Not sure if it's been done before, but I haven't seen it anywhere, so I'm posting it here. To get at it, let's first write down the pdf of the Gamma-Poisson distribution. It's just a mixture of Poisson distributions with parameter $\lambda$ drawn from a Gamma distribution with parameters (**shape** = $\alpha$) and (**rate** = $\beta$):
 
 <center>
 
@@ -50,7 +50,7 @@ $f_{GammaPoi}(x) = \frac{\Gamma(x + \alpha)}{x!\Gamma(\alpha)}\left(\frac{\beta}
 
 </center>
 
-Notice that I separated the term with $\beta$ and $1 + \beta$ into two terms. I did this to show the relation to the Negative Binomial distribution. The Negative Binomial distribution is a Poisson-Gamma distribution with $\alpha = r$ and $\beta = p$. It is defined as:
+Notice that I separated the term with $\beta$ and $1 + \beta$ into two terms. I did this to show more clearly the relationship between the Gamma-Poisson and the Negative Binomial distribution. Rearranging like this, we can see that the Negative Binomial distribution and Gamma-Poisson distribution are related as $\alpha = r$ and $\frac{\beta}{1 + \beta} = p$. It is defined as:
 
 <center>
 
@@ -66,7 +66,7 @@ $\sigma(z) = p = \frac{\beta}{1 + \beta}$
 
 </center>
 
-Then we can rewrite the Poisson-Gamma distribution as:
+Then we can rewrite the Gamma-Poisson distribution as:
 
 <center>
 
@@ -98,7 +98,7 @@ Specifically, after further reparameterizing the shape $\alpha$ as log shape $\l
 
 - Weights: $x + \alpha$
 
-We can just use the Binary Cross Entropy loss function `BCEWithLogitsLoss` for half of the Poisson-Gamma likelihood computation:
+We can just use the Binary Cross Entropy loss function `BCEWithLogitsLoss` for half of the Gamma-Poisson likelihood computation:
 
 <center>
 
@@ -108,7 +108,7 @@ $\alpha\log{\sigma(z)} + x\log{(1 - \sigma(z))}$
 
 </center>
 
-Meanwhile, the other half can just be computed using `torch.lgamma()` functions. The full Poisson-Gamma likelihood computation is:
+Meanwhile, the other half can just be computed using `torch.lgamma()` functions. The full Gamma-Poisson likelihood computation is:
 
 ```python
 def gamma_poisson_loss(self, log_shape, logits, value):
@@ -146,6 +146,6 @@ $\beta = \frac{p}{1 - p} = \frac{\sigma(z)}{1 - \sigma(z)} = \frac{1}{1 + e^{-z}
 
 </center>
 
-In conclusion, we parameterized the Gamma-Poisson distribution using logits and log shape. These parameters are unrestricted, so we can ask a neural network to output logits $z$ and $\log(\alpha)$ for the Poisson-Gamma distribution. We then use Binary Cross Entropy for parts the likelihood computation, and `torch.lgamma()` functions for the rest. Voila! No more exploding gradients!
+In conclusion, we parameterized the Gamma-Poisson distribution using logits and log shape. These parameters are unrestricted, so we can ask a neural network to output logits $z$ and $\log(\alpha)$ for the Gamma-Poisson distribution. We then use Binary Cross Entropy for parts the likelihood computation, and `torch.lgamma()` functions for the rest. Voila! No more exploding gradients!
 
 -Randy
