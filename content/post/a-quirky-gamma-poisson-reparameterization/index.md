@@ -1,22 +1,15 @@
 +++
-title: A Quirky Gamma-Poisson Reparameterization
-subtitle: ""
-date: 2024-04-25T00:00:00.000Z
-summary: ""
-draft: false
-featured: true
-authors:
-  - admin
-tags:
-  - blog
-categories: []
-projects: []
-image:
-  caption: ""
-  focal_point: ""
-  placement: 2
-  preview_only: false
-  
+title = "A Quirky Gamma-Poisson Reparameterization"
+subtitle = ""
+date = 2024-04-25T00:00:00.000Z
+summary = ""
+draft = false
+featured = true
+authors = ["admin"]
+tags = ["blog"]
+categories = []
+projects = []
+
 [header]
 image = "gamma-poisson.png"
 +++
@@ -27,7 +20,7 @@ First of all, documentation on Gamma distributions are messy, not only are there
 
 I've finally found a good reference in [This](https://www.youtube.com/watch?v=B7pQpW6-id0) video. It explains it super clearly, and clarifies whether he's using the scale or rate parameterization, and links it to the Negative Binomial distribution. Turns out, besides using scale or rate, there's a quirky third reparameterization that I didn't know about. Let's write down the pdf of the Poisson-Gamma distribution. It's just a mixture of Poisson distributions with parameter $\lambda$ drawn from a Gamma distribution with parameters (**shape** = $\alpha$) and (**rate** = $\beta$):
 
-$f_{Poisson}(\lambda) = \frac{e^{-\lambda}\lambda^{x}}{x!}$
+$\begin{aligned}f_{Poisson}(\lambda) = \frac{e^{-\lambda}\lambda^{x}}{x!}\end{aligned}$
 
 $f_{Gamma}(\lambda | \alpha, \beta) = \frac{\beta^{\alpha}}{\Gamma(\alpha)}\lambda^{\alpha - 1}e^{-\beta\lambda}$
 
