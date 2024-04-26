@@ -1,4 +1,4 @@
----
++++
 title: A Quirky Gamma-Poisson Reparameterization
 subtitle: ""
 date: 2024-04-25T00:00:00.000Z
@@ -16,7 +16,10 @@ image:
   focal_point: ""
   placement: 2
   preview_only: false
----
+  
+[header]
+image = "gamma-poisson.png"
++++
 
 I have recently been experimenting with Bayesian models of count data using Gamma-Poisson distributions. The objective was simple, using auxiliary features, use a neural network to predict the parameters of the Gamma distribution, and then use the Gamma distribution as a prior for the count data. The issue arises when trying to actually implement it. Any naive reparameterizations I tried, using `torch.log`, adding epsilons everywhere, normalizing the count data, etc. didn't seem to work. I needed to understand the Gamma distribution better.
 
