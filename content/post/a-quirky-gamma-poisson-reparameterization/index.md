@@ -1,5 +1,5 @@
 +++
-title = "The Best Gamma-Poisson Parameterization (IMO)"
+title = "The Best Gamma-Poisson Parameterization imo."
 subtitle = ""
 date = "2024-04-25T00:00:00.000Z"
 summary = ""
