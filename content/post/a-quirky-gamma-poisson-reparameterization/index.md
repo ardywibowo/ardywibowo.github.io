@@ -50,7 +50,7 @@ $f_{GammaPoi}(x) = \frac{\Gamma(x + \alpha)}{x!\Gamma(\alpha)}\left(\frac{\beta}
 
 </center>
 
-Notice that I separated the term with $\beta$ and $1 + \beta$ into two terms. I did this to show more clearly that the Gamma-Poisson and the Negative Binomial distribution are very closely related. Rearranging it like this, we can see that the Negative Binomial distribution and Gamma-Poisson distribution are related as $\alpha = r$ and $\frac{\beta}{1 + \beta} = p$. It is defined as:
+Notice that I separated the term with $\beta$ and $1 + \beta$ into two terms. I did this to show that the Gamma-Poisson is very closely related to the so-called Negative Binomial distribution. The Negative Binomial distribution is defined as: 
 
 <center>
 
@@ -58,7 +58,7 @@ $f_{NegBin}(x) = \frac{\Gamma(x + r)}{x!\Gamma(r)}p^{r}(1 - p)^{x}$
 
 </center>
 
-This is a way better reparameterization than the usual scale or rate parameterization. As we will see, it allows us to use Binary Cross Entropy, which has been heavily optimized in many libraries and very stable. So, lets parameterize it in terms of logits $z$:
+We can see that the Negative Binomial distribution and Gamma-Poisson distribution are related as $\alpha = r$ and $\frac{\beta}{1 + \beta} = p$. This is a way better reparameterization than the usual scale or rate parameterization. As we will see, it allows us to use Binary Cross Entropy to compute the log-likelihood, a function which has been heavily optimized in many libraries and is very stable. So, lets parameterize it in terms of logits $z$, and $\sigma(z)$ is the sigmoid of $z$:
 
 <center>
 
