@@ -1,5 +1,5 @@
 +++
-title = "Why Tokens are Awesome"
+title = "Why Tokens are Awesome (or why everything else is not)"
 subtitle = ""
 date = "2024-07-25T00:00:00.000Z"
 summary = ""
