@@ -2,11 +2,11 @@
 title: Randy Ardywibowo
 role: Ph.D.
 avatar_filename: avatar.jpg
-bio: I am interested in contextual bandits, sampling techniques & applications, and language understanding.
+bio: I am interested in reinforcement learning, language agents & reasoning, sampling techniques, and contextual bandits.
 interests:
-  - Contextual Bandits
-  - Sampling Techniques & Applications
-  - Language Understanding
+  - Reinforcement Learning
+  - Language Agents & Reasoning
+  - Sampling Techniques
 social:
   - icon: linkedin
     icon_pack: fab
@@ -30,7 +30,7 @@ email: "ardywibowo.randy@gmail.com"
 superuser: true
 highlight_name: false
 ---
-My current interests is on contextual bandits, sampling techniques & applications, and language understanding.
+My current research interests is on reinforcement learning, language agents & reasoning, sampling techniques, and contextual bandits.
 
 I received my doctorate in Electrical Engineering at Texas A&M University under the supervision of Dr. Xiaoning Qian. During my studies, I researched uncertainty quantification in machine learning, with applications to time-series prediction, computer vision, energy-efficient ML, anomaly detection, continual learning, deep model compression, and healthcare monitoring.
 
