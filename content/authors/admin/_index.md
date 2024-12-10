@@ -30,10 +30,8 @@ email: "ardywibowo.randy@gmail.com"
 superuser: true
 highlight_name: false
 ---
-My current research interests is on reinforcement learning, language agents & reasoning, sampling techniques, and contextual bandits.
+My current research interests is on reinforcement learning, language agents & reasoning, sampling techniques, and contextual bandits. I am currently building Machine Learning algorithms @ Apple Inc.
 
 I received my doctorate in Electrical Engineering at Texas A&M University under the supervision of Dr. Xiaoning Qian. During my studies, I researched uncertainty quantification in machine learning, with applications to time-series prediction, computer vision, energy-efficient ML, anomaly detection, continual learning, deep model compression, and healthcare monitoring.
-
-I am currently building Machine Learning algorithms @ Apple Inc. 
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "media/randy_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
