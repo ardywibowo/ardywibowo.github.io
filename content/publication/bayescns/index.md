@@ -18,7 +18,7 @@ url_video: ""
 author_notes: []
 doi: ""
 publication: AAAI 2025
-featured: true
+featured: false
 tags: []
 projects: []
 image:

@@ -20,7 +20,7 @@ url_video: ""
 author_notes: []
 doi: ""
 publication: ICML 2022
-featured: true
+featured: false
 tags: []
 projects: []
 image:
