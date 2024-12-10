@@ -38,7 +38,7 @@ experience:
     location: College Station, Texas
     date_start: '2017-09-01'
     date_end: '2022-08-22'
-    description: Uncertainty quantification for outlier detection, robust prediction, adaptive monitoring, model compression, and continual learning.
+    description: Variational Inference, Continual Learning, Uncertainty Quantification, Outlier Detection, Model Robustness
 
   - title: Intern
     company: Qualcomm
