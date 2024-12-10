@@ -29,7 +29,7 @@ experience:
     location: Cupertino, California
     date_start: '2022-08-22'
     date_end: ''
-    description: Information retrieval, contextual bandits, language understanding
+    description: Reinforcement Learning, Language Agents, Information Retrieval, Contextual Bandits
 
   - title: Graduate Researcher
     company: Texas A&M University
