@@ -7,7 +7,7 @@ title: Recent Publications
 subtitle: ""
 content:
   page_type: publication
-  count: 5
+  count: 8
   offset: 0
   order: desc
   filters:

@@ -1,7 +1,7 @@
 ---
 abstract: 'A method performed by a deep neural network (DNN) includes receiving, at a layer of the DNN during an inference stage, a layer input comprising content associated with a DNN input received at the DNN. The method also includes quantizing one or more parameters of a plurality of parameters associated with the layer based on the content of the layer input. The method further includes performing a task corresponding to the DNN input, the task performed with the one or more one quantized parameters.'
 url_pdf: https://patents.google.com/patent/US20220101133A1/en
-title: "Dynamic quantization for energy efficient deep learning"
+title: "Dynamic Quantization for Energy Efficient Deep Learning"
 publication_types:
   - "8"
 authors:
