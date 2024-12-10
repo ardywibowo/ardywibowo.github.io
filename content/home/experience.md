@@ -47,7 +47,7 @@ experience:
     location: San Diego, California
     date_start: '2020-05-09'
     date_end: '2020-08-31'
-    description: Dynamic deep learning model compression.
+    description: Computer Vision, DNN Model Compression.
 
   - title: Research Scientist
     company: University of Washington
@@ -56,7 +56,7 @@ experience:
     location: Seattle, Washington
     date_start: '2018-05-14'
     date_end: '2018-09-14'
-    description: Computer vision for skin disease classification and segmentation.
+    description: Computer Vision, Skin Disease, Medicine.
 
 design:
   columns: '2'
