@@ -9,6 +9,7 @@ authors = ["admin"]
 tags = ["blog"]
 categories = []
 projects = []
+images = ["intrinsic-rewards.png"]
 +++
 
 ![image](intrinsic-rewards.png)
