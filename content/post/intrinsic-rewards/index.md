@@ -1,5 +1,5 @@
 +++
-title = "Research Statement: Scaling Supervision with Intrinsic Rewards"
+title = "Scaling Supervision with Intrinsic Rewards"
 subtitle = ""
 date = "2024-12-11T00:00:00.000Z"
 summary = ""

@@ -6,7 +6,7 @@ widget: featured
 headless: true
 # Order that this section appears on the page.
 weight: 20
-title: Featured Post
+title: Research Statement
 subtitle: ""
 content:
   # Page type to display. E.g. post, talk, publication...
