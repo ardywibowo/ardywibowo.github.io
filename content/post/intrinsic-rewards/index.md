@@ -1,6 +1,6 @@
 +++
 title = "Scaling Supervision with Intrinsic Rewards"
-subtitle = ""
+subtitle = "Intrinsic rewards are the self-supervised pretraining stage for reinforcement learning agents."
 date = "2024-12-11T00:00:00.000Z"
 summary = ""
 draft = false
