@@ -2,7 +2,7 @@
 widget: pages
 widget_id: recent-publications
 headless: true
-weight: 22
+weight: 40
 title: Recent Publications
 subtitle: ""
 content:
