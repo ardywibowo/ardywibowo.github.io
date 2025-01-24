@@ -18,7 +18,7 @@ content:
     author: ""
     category: ""
     publication_type: ""
-    tag: "academic tree"
+    tag: "academic_tree"
   # Page order: descending (desc) or ascending (asc) date.
   order: desc
 design:
