@@ -6,7 +6,7 @@ summary = ""
 draft = false
 featured = false
 authors = ["admin"]
-tags = ["blog"]
+tags = ["academic tree"]
 categories = []
 projects = []
 images = ["tree.png"]
@@ -14,7 +14,7 @@ images = ["tree.png"]
 
 ![image](tree.png)
 
-An academic family tree is a diagram that shows the relationships between researchers and their advisors. It is a way to visualize the academic lineage of a researcher and to see how ideas have been passed down through generations. I find it amazing that many modern researchers can trace their academic lineage to great scientists from the past. I think it's a great way to pay homage to the people who have come before us and to show how ideas are built on top of each other. I also think it's a great way to show how we are all connected in some way. You can see my academic tree above. Among other great figures, some of my academic ancestors include:
+An academic family tree is a diagram that shows the relationships between researchers and their advisors. I find it amazing that many modern researchers can trace their academic lineage to great scientists from the past. I think it's a great way to pay homage to the people who have come before us. You can see my academic tree above. Among other great figures, some of my academic ancestors include:
 
 - **Gaston Darboux** (1842–1917): a French mathematician renowned for his contributions to differential geometry, particularly the Darboux theorem and the Darboux integral, which significantly advanced the understanding of surfaces and transformations in geometry.
 
