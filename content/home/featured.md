@@ -18,7 +18,7 @@ content:
     author: ""
     category: ""
     publication_type: ""
-    tag: ""
+    tag: "research_statement"
   # Page order: descending (desc) or ascending (asc) date.
   order: desc
 design:
