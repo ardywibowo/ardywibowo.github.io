@@ -1,7 +1,7 @@
 +++
 title = "Academic Tree"
 subtitle = ""
-date = "2024-01-24T00:00:00.000Z"
+date = "2025-01-24T00:00:00.000Z"
 summary = ""
 draft = false
 featured = false
