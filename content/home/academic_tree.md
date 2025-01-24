@@ -5,7 +5,7 @@ widget: featured
 # This file represents a page section.
 headless: true
 # Order that this section appears on the page.
-weight: 21
+weight: 41
 title: Academic Tree
 subtitle: ""
 content:
