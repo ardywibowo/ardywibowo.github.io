@@ -9,7 +9,7 @@ authors = ["admin"]
 tags = ["blog"]
 categories = []
 projects = []
-images = ["state1.png", "state2.png", "state3.png"]
+images = ["state1.png"]
 +++
 
 
