@@ -12,12 +12,12 @@ authors:
 summary: ""
 url_dataset: ""
 url_project: ""
-publication_short: AAAI 2025
+publication_short: AAAI 2025 (Full Talk)
 url_source: ""
 url_video: ""
 author_notes: []
 doi: ""
-publication: AAAI 2025
+publication: AAAI 2025 (Full Talk)
 featured: false
 tags: []
 projects: []

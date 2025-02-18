@@ -14,12 +14,12 @@ authors:
 summary: ""
 url_dataset: ""
 url_project: ""
-publication_short: ICML 2022
+publication_short: ICML 2022 (Spotlight Talk)
 url_source: ""
 url_video: ""
 author_notes: []
 doi: ""
-publication: ICML 2022
+publication: ICML 2022 (Spotlight Talk)
 featured: false
 tags: []
 projects: []
