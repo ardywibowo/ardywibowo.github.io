@@ -79,10 +79,7 @@ Retreating the knight to f8, Black looks to reorganize its forces—possibly rer
 ...
 ```
 
-<!-- <div style="display: flex; justify-content: center; gap: 20px;">
-    <img src="state1.png" alt="state1" width="300"/>
-    <img src="state2.png" alt="state2" width="300"/>
-    <img src="state3.png" alt="state3" width="300"/>
-</div> -->
+| ![state1](state1.png) | ![state2](state2.png) | ![state3](state3.png) |
+|:----------------------:|:----------------------:|:----------------------:|
 
 We are currently analyzing its performance, as well as training a model from scratch to measure its scaling laws. Additional results will be published soon.
