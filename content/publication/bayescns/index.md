@@ -26,9 +26,9 @@ image:
   focal_point: ""
   preview_only: false
   filename: featured.png
-date: 2024-12-09T00:00:00.000Z
+date: 2025-01-09T00:00:00.000Z
 url_slides: ""
-publishDate: 2024-12-09T00:00:00.000Z
+publishDate: 2025-01-09T00:00:00.000Z
 url_poster: ""
 url_code: ""
 ---
