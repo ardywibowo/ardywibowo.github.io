@@ -12,6 +12,8 @@ projects = []
 images = ["webcrawl.png"]
 +++
 
+![image](webcrawl.png)
+
 Web crawling at scale involves fetching and processing billions of pages across the internet. Achieving this requires robust tools and careful design to handle distribution, deduplication, and real‑time updates. This guide compiles **practical resources** – from open‑source frameworks to engineering blogs and influential academic papers – to help you get up and running quickly with existing crawlers while also gaining a deep understanding of large‑scale crawling systems. We organize the information by frameworks, design patterns (distributed crawling, deduplication, etc.), batch vs. real‑time crawling, and performance considerations, with links and references for further reading.
 
 ## Frameworks and Tools for Large‑Scale Crawling
