@@ -4,7 +4,7 @@ subtitle = "Intrinsic rewards are the self-supervised pretraining stage for rein
 date = "2024-12-11T00:00:00.000Z"
 summary = ""
 draft = false
-featured = true
+featured = false
 authors = ["admin"]
 tags = ["research_statement"]
 categories = []
@@ -14,7 +14,7 @@ images = ["intrinsic-rewards.png"]
 
 ![image](intrinsic-rewards.png)
 
-*"Intrinsic rewards are the self-supervised pretraining stage for reinforcement learning agents."*
+_"Intrinsic rewards are the self-supervised pretraining stage for reinforcement learning agents."_
 
 One of the most critical challenges in training AI systems today is finding scalable supervision signals. As models grow in complexity and their applications extend into increasingly nuanced domains, providing supervision to lead them towards performing well on a task becomes more difficult. Current approaches such as Reinforcement Learning from Human Feedback (RLHF) rely heavily on feedback from humans. While effective, this process is expensive, requiring a significant investment of time and resources from domain experts.
 
