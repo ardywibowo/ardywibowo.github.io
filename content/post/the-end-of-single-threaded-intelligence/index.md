@@ -14,22 +14,22 @@ images = ["single-threaded.png"]
 
 ![image](single-threaded.png)
 
-In grad school I was working on fundamental machine learning relating to approximate Bayesian inference, such as using neural networks for variational inference. at the time, I was very interested in data efficiency: how much can you learn with a given sample size.
+During grad school, I worked on foundational problems in machine learning, particularly around approximate Bayesian inference and the use of neural networks for variational methods. My focus at the time was data efficiency: understanding how much one could learn from a given sample size.
 
-More and more I noticed that simply scaling compute through training bigger models, on big datasets for longer resulted in amazing capabilities. When I worked on time series, I noticed the same phenomena. It is the case that High Frequency Trading firms rely on scaling up model training compute for better price prediction models. In the area I’m currently working on, which is search & recommender systems, we’re seeing a clear scaling law where performance gets better with more data and parameters. We’re also seeing this now with language models but it also applies to other areas as well.
+Over time, I began to notice a broader trend: simply scaling compute, training larger models on bigger datasets for longer, yielded dramatic improvements. I saw this across domains. In time series forecasting, for example, High Frequency Trading firms achieve better price predictions by throwing more compute at model training. In my current work on search and recommender systems, we observe clear scaling laws: model performance improves consistently with more data and larger parameter counts. And, of course, we now see this scaling behavior with language models as well.
 
-I’m completely convinced that the most important research now is to figure out what axes we have yet to scale.
+I’ve become convinced that the most important research question today is: what are the remaining axes we have yet to scale?
 
-For example, the recent interest in Reinforcement Learning is an effort by the field to further scale on two directions.
+Reinforcement Learning (RL), for example, represents an attempt to scale along two underexplored directions. First, data. We're approaching the limits of high-quality internet-scale data. RL introduces rollout-based synthetic data generation, offering a new supply of training experiences. Second, test-time compute. RL enables models to learn to allocate more compute during inference by performing a form of search or deliberation.
 
-One is data. It is no surprise that we’ve currently run out of quality internet data. The rollout process in RL can be thought of as a synthetic data generation method.
+But what happens after we exhaust these avenues? I believe the next major shift will be toward multi-threaded or multi-agent systems. Today’s models are fundamentally single-threaded: a single generator processes a bounded context to produce tokens sequentially. While there have been advances in extending context windows, quadratic attention costs will eventually cap that scalability. Additionally, larger contexts increase the risk of “context pollution”—models can become distracted or misled by irrelevant tokens.
 
-The other is in single-threaded test time compute. I’ll explain what I mean by single-threaded in a moment, but essentially, RL allows models to learn to leverage more compute during test time and do a limited form of search.
+By contrast, parallel generation is relatively straightforward. A model could even process parts of the input in parallel while responding. One promising area for multi-threaded intelligence is streaming multimodal models. Basic multimodal systems treat inputs and outputs as flowing through a shared context. But we could imagine parallel threads—one processing audio or video inputs in real time, another generating outputs in response. This opens up fundamental research questions:
 
-So what are the remaining axes that we’ve yet to scale? I think RL will take us very far, but I think the next scaling paradigm might be multi-threaded or multi-agent systems. As an analogy, current systems are entirely single-threaded: A single generator processes a limited context window to generate new tokens. While there have been breakthroughs in increasing the context-window, it’s only a matter of time before the quadratic attention costs catch up to us and we’re unable to scale single-threaded test-time compute further. Moreover, context pollution becomes a potential issue. Models may not be able to reliably use the entire context and may get distracted on spurious tokens within it.
+- What’s the right interaction model for multiple threads?
+- What should be exchanged in latent space versus token space?
+- How can we structure token-space communication between threads?
 
-On the other hand, generating completions in parallel is relatively trivial. Models can even pre-process inputs in parallel while it’s responding, an idea brought up in the sleep-time compute paper.
+More broadly: How should we design interaction protocols between multiple threads or agents? Is there a more fundamental compositional primitive beyond prompt-engineered role assignments and structured scaffolding? Can we discover simpler, emergent coordination mechanisms?
 
-One area where this paradigm might be applied is with streaming multimodal models. Simple multimodal models all read from and write to the same context. One can envision that separate threads can be run simultaneously, where one thread would observe video or audio inputs while another would respond to these observations. There are many interesting research questions to pursue here: What’s the right form where these multiple threads interact? Which parts should be in latent space, and which parts should be in token space? How do interactions between threads in token space happen? How should we design this interaction protocol?
-
-More generally, how should we design the interaction protocol for multiple threads/agents working together? Is there a fundamental primitive in which we can combine outputs from different streams? Can we do away with the complicated structures in which we prescribe how different agents interact (currently we do heavy prompt engineering and assign different roles to agents).
+These are some of the most exciting and underexplored frontiers in scaling intelligence—beyond single-threaded inference, toward a richer, more dynamic model of computation.
