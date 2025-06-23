@@ -12,8 +12,7 @@ projects = []
 images = ["state1.png"]
 +++
 
-
-Recent advances in neural networks have demonstrated superhuman performance in chess, yet these successes have traditionally relied on an auxiliary search mechanism—such as Monte Carlo Tree Search (MCTS)—to provide the “System 2” reasoning that complements the neural network’s rapid “System 1” responses. Recently, however, reinforcement learning techniques have enabled large language models (LLMs) to perform complex reasoning without the need for explicit external search processes. This development raises a fundamental question: *What are the limitations of this training paradigm?*
+Recent advances in neural networks have demonstrated superhuman performance in chess, yet these successes have traditionally relied on an auxiliary search mechanism—such as Monte Carlo Tree Search (MCTS)—to provide the “System 2” reasoning that complements the neural network’s rapid “System 1” responses. Recently, however, reinforcement learning techniques have enabled large language models (LLMs) to perform complex reasoning without the need for explicit external search processes. This development raises a fundamental question: _What are the limitations of this training paradigm?_
 
 One promising approach to addressing this question is to evaluate LLM-based reasoners within the domain of chess. Chess offers several advantages as a benchmark for language model capabilities:
 
@@ -45,15 +44,15 @@ We finetuned Llama3.2-1B using reinforcement learning. The setup is as follows:
 
 ```
 ...
-<think> 
+<think>
 [Reasoning Monologue]
-</think> 
+</think>
 [Move, e.g. 1. e4]
-<think> 
+<think>
 [Reasoning Monologue]
-</think> 
+</think>
 [Move, e.g. 1. ...e5]
-<think> 
+<think>
 [Reasoning Monologue]
 </think>
 ...
@@ -67,19 +66,39 @@ The resulting model exhibits reasoning traces that emerge simply from the traini
 
 ```
 ...
-<think> 
-White develops the other bishop to d3, reinforcing central control and preparing to support an eventual kingside advance. Alternatives like Rd1 were considered, but Bd3 develops a new piece with an eye on Black’s weaknesses. 
-</think> 
-13. Bd3 
-<think> 
-Retreating the knight to f8, Black looks to reorganize its forces—possibly rerouting to g6 or e6 later—to better support the kingside. Keeping the knight on d7 might expose it to tactics, so Nf8 is more defensive. 
-</think> 
-13... Nf8 
+<think>
+White develops the other bishop to d3, reinforcing central control and preparing to support an eventual kingside advance. Alternatives like Rd1 were considered, but Bd3 develops a new piece with an eye on Black’s weaknesses.
+</think>
+13. Bd3
+<think>
+Retreating the knight to f8, Black looks to reorganize its forces—possibly rerouting to g6 or e6 later—to better support the kingside. Keeping the knight on d7 might expose it to tactics, so Nf8 is more defensive.
+</think>
+13... Nf8
 <think>
 ...
 ```
 
 | ![state1](state1.png) | ![state2](state2.png) | ![state3](state3.png) |
-|:----------------------:|:----------------------:|:----------------------:|
+| :-------------------: | :-------------------: | :-------------------: |
 
-We are currently analyzing its performance, as well as training a model from scratch to measure its scaling laws. Additional results will be published soon.
+### Scaling Laws
+
+We can fine-tune models of different sizes and plot the scaling laws for both the size of the model and the number of reasoning tokens used. We see two patterns: 1) Performance follows a sigmoid pattern where adding more reasoning tokens eventually leads to a plateau in model capability. 2) Larger models lead to better improvements from reasoning.
+
+![scaling_size](scaling_size.png)
+
+We trained our models for up to 2.6M episodes, With each episode consisting of up to 256 tokens of reasoning per move. And we see this pattern. Firstly, the usage of inference compute improves with the number of training episodes or dataset size N. We also see that we can happily trade-off training time compute for inference-time compute. For example, You can halve the training amount needed if you’re willing to pay around 4 times the number of tokens during inference.
+
+![scaling_tokens](scaling_tokens.png)
+
+There’s also previous work that’s somewhat similar that supports this behavior. For example, although not regarding inference compute, this work by Aidan Clark et al. derived scaling laws for routed language models, otherwise known as mixture of experts. When they increased the expert count, they see this sigmoid pattern where the loss starts to plateau as you add more and more tokens.
+
+| ![moe_scaling](moe_scaling.png) | ![scaling_tokens](scaling_tokens.png) |
+| :-----------------------------: | :-----------------------------------: |
+
+You can kind of interpret reasoning tokens in a similar mixture of experts kind of way, where each reasoning token you can think of as adding another expert, the tokens are just vectors and get processed into matrices that gets routed by attention after all.
+
+Also, another paper by Jones et al also explored test time scaling in games. In this example, they varied the test time compute by changing the number of monte carlo tree search steps. Although not dealing with language models per se, this result also supports the notion that test time scaling eventually saturates
+
+| ![scaling_test_time](scaling_test_time.png) | ![scaling_size](scaling_size.png) |
+| :-----------------------------------------: | :-------------------------------: |
