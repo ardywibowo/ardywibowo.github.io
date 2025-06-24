@@ -14,6 +14,8 @@ images = ["single-threaded.png"]
 
 ![image](single-threaded.png)
 
+Scaling single-threaded model generation will end. We will hit context length limits and reach issues with context window pollution. The next frontier is multi-agent systems, under the guise of context management, multi-threaded models, or emergent coordination protocols.
+
 During grad school, I worked on foundational problems in machine learning, particularly around approximate Bayesian inference and the use of neural networks for variational methods. My focus at the time was data efficiency: understanding how much one could learn from a given sample size.
 
 Over time, I began to notice a broader trend: simply scaling compute, training larger models on bigger datasets for longer, yielded dramatic improvements. I saw this across domains. In time series forecasting, for example, High Frequency Trading firms achieve better price predictions by throwing more compute at model training. In my current work on search and recommender systems, we observe clear scaling laws: model performance improves consistently with more data and larger parameter counts. And, of course, we now see this scaling behavior with language models as well.
