@@ -22,13 +22,22 @@ date_format: Jan 2006
 #   Leave `date_end` empty if it's your current employer.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 experience:
+  - title: Researcher
+    company: Perplexity
+    company_url: ''
+    company_logo: perplexity
+    location: San Francisco, California
+    date_start: '2025-11-01'
+    date_end: ''
+    description: Post-training, Large-scale Agentic RL, Training Infra
+
   - title: Research Engineer
     company: Apple
     company_url: ''
     company_logo: apple
     location: Cupertino, California
     date_start: '2022-08-22'
-    date_end: ''
+    date_end: '2025-11-01'
     description: Reinforcement Learning, Language Agents, Information Retrieval, Contextual Bandits
 
   - title: Graduate Researcher

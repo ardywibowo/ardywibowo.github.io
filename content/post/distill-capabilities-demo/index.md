@@ -22,7 +22,7 @@ doi = "10.23915/distill.demo.2026"
 
     [[distill.authors.affiliations]]
     name = "Apple"
-    url = "https://www.apple.com"
+    url = ""
 
   [[distill.authors]]
   author = "Guest Collaborator"
