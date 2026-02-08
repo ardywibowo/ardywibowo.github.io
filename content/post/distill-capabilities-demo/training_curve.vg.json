@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Interactive training curve demo.",
+  "width": 640,
+  "height": 320,
+  "data": {
+    "values": [
+      {"step": 0, "loss": 2.6, "split": "train"},
+      {"step": 100, "loss": 2.1, "split": "train"},
+      {"step": 200, "loss": 1.7, "split": "train"},
+      {"step": 300, "loss": 1.45, "split": "train"},
+      {"step": 400, "loss": 1.32, "split": "train"},
+      {"step": 500, "loss": 1.22, "split": "train"},
+      {"step": 0, "loss": 2.7, "split": "validation"},
+      {"step": 100, "loss": 2.3, "split": "validation"},
+      {"step": 200, "loss": 2.0, "split": "validation"},
+      {"step": 300, "loss": 1.82, "split": "validation"},
+      {"step": 400, "loss": 1.78, "split": "validation"},
+      {"step": 500, "loss": 1.75, "split": "validation"}
+    ]
+  },
+  "mark": {
+    "type": "line",
+    "point": true,
+    "tooltip": true
+  },
+  "encoding": {
+    "x": {"field": "step", "type": "quantitative", "title": "Training Step"},
+    "y": {"field": "loss", "type": "quantitative", "title": "Loss"},
+    "color": {"field": "split", "type": "nominal", "title": "Split"}
+  },
+  "selection": {
+    "grid": {"type": "interval", "bind": "scales"}
+  }
+}

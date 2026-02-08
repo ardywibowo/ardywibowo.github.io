@@ -1,0 +1,110 @@
+{{- $page := . -}}
+{{- $authors := slice -}}
+
+{{- with .Params.distill.authors -}}
+  {{- range . -}}
+    {{- $name := .author | default .name | default "" -}}
+    {{- $url := .authorURL | default .url | default "" -}}
+    {{- $affiliations := slice -}}
+    {{- with .affiliations -}}
+      {{- range . -}}
+        {{- $affName := .name | default (printf "%v" .) -}}
+        {{- $affURL := .url | default "" -}}
+        {{- if $affName -}}
+          {{- $affiliations = $affiliations | append (dict "name" $affName "url" $affURL) -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if $name -}}
+      {{- $authors = $authors | append (dict "name" $name "url" $url "affiliations" $affiliations) -}}
+    {{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- with .Params.authors -}}
+    {{- range . -}}
+      {{- $authorID := printf "%v" . -}}
+      {{- $authorName := humanize $authorID -}}
+      {{- $authorURL := "" -}}
+      {{- $affiliations := slice -}}
+
+      {{- with $page.Site.GetPage (printf "/authors/%s" $authorID) -}}
+        {{- with .Title -}}
+          {{- $authorName = . -}}
+        {{- end -}}
+        {{- $authorURL = .RelPermalink -}}
+        {{- with .Params.organizations -}}
+          {{- range . -}}
+            {{- $affName := .name | default (printf "%v" .) -}}
+            {{- $affURL := .url | default "" -}}
+            {{- if $affName -}}
+              {{- $affiliations = $affiliations | append (dict "name" $affName "url" $affURL) -}}
+            {{- end -}}
+          {{- end -}}
+        {{- else -}}
+          {{- with .Params.role -}}
+            {{- $role := printf "%v" . -}}
+            {{- if $role -}}
+              {{- $affiliations = $affiliations | append (dict "name" $role "url" "") -}}
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+
+      {{- $authors = $authors | append (dict "name" $authorName "url" $authorURL "affiliations" $affiliations) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+<div class="article-container">
+  <d-byline class="distill-post-byline">
+    <div class="byline grid">
+      <div class="authors-affiliations grid">
+        <h3>Authors</h3>
+        <h3>Affiliations</h3>
+
+        {{- if gt (len $authors) 0 -}}
+          {{- range $authors -}}
+          <p class="author">
+            {{- if .url -}}
+              <a class="name" href="{{ .url }}">{{ .name }}</a>
+            {{- else -}}
+              <span class="name">{{ .name }}</span>
+            {{- end -}}
+          </p>
+          <p class="affiliation">
+            {{- if gt (len .affiliations) 0 -}}
+              {{- range $i, $aff := .affiliations -}}
+                {{- if gt $i 0 -}}, {{- end -}}
+                {{- if $aff.url -}}
+                  <a class="affiliation" href="{{ $aff.url }}">{{ $aff.name }}</a>
+                {{- else -}}
+                  <span class="affiliation">{{ $aff.name }}</span>
+                {{- end -}}
+              {{- end -}}
+            {{- else -}}
+              <span class="affiliation">-</span>
+            {{- end -}}
+          </p>
+          {{- end -}}
+        {{- else -}}
+          <p class="author"><span class="name">-</span></p>
+          <p class="affiliation"><span class="affiliation">-</span></p>
+        {{- end -}}
+      </div>
+
+      <div>
+        <h3>Published</h3>
+        <p>{{ .Date.Format "Jan 2, 2006" }}</p>
+      </div>
+
+      <div>
+        <h3>DOI</h3>
+        {{- with .Params.doi -}}
+          <p><a href="https://doi.org/{{ . }}">{{ . }}</a></p>
+        {{- else -}}
+          <p><em>No DOI yet.</em></p>
+        {{- end -}}
+      </div>
+    </div>
+  </d-byline>
+</div>

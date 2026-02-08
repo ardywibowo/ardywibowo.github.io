@@ -1,0 +1,44 @@
+{{- define "main" -}}
+
+<article class="article article-post">
+
+  {{ partial "page_header" . }}
+  <section class="distill-post-byline-band">
+    {{ partial "post/distill_byline" . }}
+  </section>
+
+  <div class="article-container">
+    {{- $tocHTML := .TableOfContents -}}
+    {{- $hasTOC := and .Params.toc (in $tocHTML "<li>") -}}
+    {{- $tocMobile := replace $tocHTML `id="TableOfContents"` `id="TableOfContentsMobile"` -}}
+
+    {{ if $hasTOC }}
+      <details class="distill-post-toc-mobile" open>
+        <summary class="font-weight-bold">{{ i18n "table_of_contents" }}</summary>
+        {{ $tocMobile | safeHTML }}
+      </details>
+    {{ end }}
+
+    <div class="distill-post-grid{{ if $hasTOC }} has-toc{{ end }}">
+      <div class="distill-post-main">
+        <div class="article-style">
+          {{ .Content }}
+        </div>
+        {{ partial "post/distill_appendix" . }}
+        {{ partial "page_footer" . }}
+      </div>
+
+      {{ if $hasTOC }}
+      <aside class="distill-post-toc" aria-label="Table of contents">
+        <d-toc class="distill-post-dtoc" prerendered="true">
+          <h2>Contents</h2>
+          {{ $tocHTML }}
+        </d-toc>
+      </aside>
+      {{ end }}
+    </div>
+  </div>
+
+</article>
+
+{{- end -}}

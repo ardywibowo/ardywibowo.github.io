@@ -1,0 +1,100 @@
+{{- $page := . -}}
+{{- $description := .Params.description | default .Params.summary | default "" -}}
+
+{{- $authors := slice -}}
+{{- with .Params.distill.authors -}}
+  {{- range . -}}
+    {{- $affiliations := slice -}}
+    {{- with .affiliations -}}
+      {{- range . -}}
+        {{- $affiliations = $affiliations | append (dict
+          "name" (.name | default "")
+          "url" (.url | default "")
+        ) -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $authors = $authors | append (dict
+      "author" (.author | default "")
+      "authorURL" (.authorURL | default "")
+      "affiliations" $affiliations
+    ) -}}
+  {{- end -}}
+{{- else -}}
+  {{- with .Params.authors -}}
+    {{- range . -}}
+      {{- $authorID := printf "%v" . -}}
+      {{- $authorName := humanize $authorID -}}
+      {{- $authorURL := "" -}}
+      {{- $affiliations := slice -}}
+
+      {{- with $page.Site.GetPage (printf "/authors/%s" $authorID) -}}
+        {{- with .Title -}}
+          {{- $authorName = . -}}
+        {{- end -}}
+        {{- $authorURL = .RelPermalink -}}
+        {{- with .Params.organizations -}}
+          {{- range . -}}
+            {{- $affiliations = $affiliations | append (dict
+              "name" (.name | default "")
+              "url" (.url | default "")
+            ) -}}
+          {{- end -}}
+        {{- else -}}
+          {{- with .Params.role -}}
+            {{- $affiliations = $affiliations | append (dict
+              "name" .
+              "url" ""
+            ) -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+
+      {{- $authors = $authors | append (dict
+        "author" $authorName
+        "authorURL" $authorURL
+        "affiliations" $affiliations
+      ) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $katexDelimiters := slice
+  (dict "left" "$$" "right" "$$" "display" true)
+  (dict "left" "$" "right" "$" "display" false)
+  (dict "left" "\\(" "right" "\\)" "display" false)
+  (dict "left" "\\[" "right" "\\]" "display" true)
+-}}
+
+{{- $frontMatter := dict
+  "title" .Title
+  "description" $description
+  "published" (dateFormat "Jan 2, 2006" .Date)
+  "authors" $authors
+  "katex" (dict "delimiters" $katexDelimiters)
+-}}
+
+<d-front-matter>
+  <script type="text/yml">
+    title: {{ .Title | jsonify }}
+    description: {{ $description | jsonify }}
+    published: {{ dateFormat "Jan 2, 2006" .Date | jsonify }}
+    authors:
+    {{- range $authors }}
+      - {{ .author | jsonify }}: {{ .authorURL | jsonify }}
+        affiliations:
+        {{- if gt (len .affiliations) 0 }}
+          {{- range .affiliations }}
+          - {{ .name | jsonify }}: {{ .url | jsonify }}
+          {{- end }}
+        {{- else }}
+          - "": ""
+        {{- end }}
+    {{- end }}
+    katex:
+      delimiters:
+        - {left: "$$", right: "$$", display: true}
+        - {left: "$", right: "$", display: false}
+        - {left: "\\(", right: "\\)", display: false}
+        - {left: "\\[", right: "\\]", display: true}
+  </script>
+</d-front-matter>

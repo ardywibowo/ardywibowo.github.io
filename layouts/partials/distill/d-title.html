@@ -1,0 +1,18 @@
+{{- $dtitleFile := .Params.distill.supportFiles.dtitle | default "dtitle.html" -}}
+{{- $dtitlePath := "" -}}
+{{- with .File -}}
+  {{- $dtitlePath = printf "%s%s" .Dir $dtitleFile -}}
+{{- end -}}
+<d-title>
+  {{- if and $dtitlePath (fileExists $dtitlePath) -}}
+    {{- readFile $dtitlePath | safeHTML -}}
+  {{- else -}}
+    <h1>{{ .Title }}</h1>
+    {{- with .Params.subtitle -}}
+    <p>{{ . }}</p>
+    {{- end -}}
+    {{- if not .Params.disableByline -}}
+    <d-byline></d-byline>
+    {{- end -}}
+  {{- end -}}
+</d-title>

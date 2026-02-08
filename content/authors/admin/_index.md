@@ -1,7 +1,7 @@
 ---
 title: Randy Ardywibowo
 role: Ph.D.
-avatar_filename: avatar.png
+avatar_filename: avatar_yosemite.jpg
 bio: I am interested in reinforcement learning, language agents & reasoning, sampling techniques, and contextual bandits.
 interests:
   - Reinforcement Learning
@@ -18,9 +18,9 @@ social:
     icon_pack: fab
     link: https://github.com/ardywibowo
 
-# organizations:
-#   - name:
-#     url: https://www.tamu.edu/
+organizations:
+  - name: Apple
+    url: https://www.apple.com
 education:
   courses:
     - course: Electrical Engineering and Computer Science, Ph.D.

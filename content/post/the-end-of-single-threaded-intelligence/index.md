@@ -6,6 +6,7 @@ summary = ""
 draft = false
 featured = true
 authors = ["admin"]
+toc = true
 tags = ["research_statement"]
 categories = []
 projects = []

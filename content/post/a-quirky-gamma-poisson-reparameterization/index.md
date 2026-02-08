@@ -1,5 +1,5 @@
 +++
-title = "The Best Gamma-Poisson Parameterization imo."
+title = "The Best Gamma-Poisson Parameterization"
 subtitle = ""
 date = "2024-04-25T00:00:00.000Z"
 summary = ""
@@ -14,9 +14,15 @@ projects = []
 <!-- Header Image here -->
 ![image](gamma-poisson.png)
 
+## Problem Setup
+
 I've been studying Bayesian models for count data using Gamma-Poisson distributions. The objective was simple, using auxiliary features, use a neural network to predict the parameters of the Gamma distribution, and then use the Gamma distribution as a prior for the count data. The issue arises when trying to actually implement it. Any naive reparameterization I tried (using `torch.log`, adding epsilons everywhere, normalizing the count data, etc.) didn't work, and training a neural network always resulted in exploding gradients. I needed to understand the Gamma-Poisson distribution better.
 
+## Why Existing Explanations Are Confusing
+
 First of all, documentation on Gamma distributions are messy, not only are there different reparameterizations (scale vs. rate), sometimes people use the same symbols for different parameterizations and don't tell you which ones they're using! Not to mention some references just get it wrong and the formulas are not even correct ([Look at this](https://www.math.wm.edu/~leemis/chart/UDR/PDFs/Gammapoisson.pdf). Here $\alpha$ and $\beta$ should be switched. yikes).
+
+## Derivation from First Principles
 
 Let's develop a good parameterization from first principles. Turns out, besides using scale or rate, there's a quirky third reparameterization that's far superior to all others (in my opinion). Not sure if it's been done before, but I haven't seen it anywhere, so I'm posting it here. To get at it, let's first write down the pdf of the Gamma-Poisson distribution. It's just a mixture of Poisson distributions with parameter $\lambda$ drawn from a Gamma distribution with parameters (**shape** = $\alpha$) and (**rate** = $\beta$):
 
@@ -50,6 +56,8 @@ $f_{GammaPoi}(x) = \frac{\Gamma(x + \alpha)}{x!\Gamma(\alpha)}\left(\frac{\beta}
 
 </center>
 
+## Connection to the Negative Binomial
+
 Notice that I separated the term with $\beta$ and $1 + \beta$ into two terms. I did this to show that the Gamma-Poisson is very closely related to the so-called Negative Binomial distribution. The Negative Binomial distribution is defined as: 
 
 <center>
@@ -57,6 +65,8 @@ Notice that I separated the term with $\beta$ and $1 + \beta$ into two terms. I 
 $f_{NegBin}(x) = \frac{\Gamma(x + r)}{x!\Gamma(r)}p^{r}(1 - p)^{x}$
 
 </center>
+
+## Logit-Based Parameterization
 
 We can see that the Negative Binomial distribution and Gamma-Poisson distribution are related as $\alpha = r$ and $\frac{\beta}{1 + \beta} = p$. This is a way better reparameterization than the usual scale or rate parameterization. As we will see, it allows us to use Binary Cross Entropy to compute the log-likelihood, a function which has been heavily optimized in many libraries and is very stable. So, lets parameterize it in terms of logits $z$, and $\sigma(z)$ is the sigmoid of $z$:
 
@@ -92,6 +102,8 @@ $\alpha\log{\sigma(z)} + x\log{(1 - \sigma(z))}$
 
 </center>
 
+## BCE Formulation
+
 Specifically, after further reparameterizing the shape $\alpha$ as log shape $\log(\alpha)$, the input logits, targets, and weights to the BCE are:
 
 - Logits: $z$
@@ -109,6 +121,8 @@ $\alpha\log{\sigma(z)} + x\log{(1 - \sigma(z))}$
 `= - (x + alpha) BCEWithLogitsLoss(z, alpha / (x + alpha))`
 
 </center>
+
+## PyTorch Implementation
 
 Meanwhile, the other half can just be computed using `torch.lgamma()` functions. The full Gamma-Poisson likelihood computation is:
 
@@ -140,6 +154,8 @@ def gamma_poisson_loss(self, log_shape, logits, value):
     return -log_likelihood.mean()
 ```
 
+## Recovering the Rate Parameter
+
 It's also nice because to get the rate, we can just exponentiate the logits:
 
 <center>
@@ -147,6 +163,8 @@ It's also nice because to get the rate, we can just exponentiate the logits:
 $\beta = \frac{p}{1 - p} = \frac{\sigma(z)}{1 - \sigma(z)} = \frac{1}{1 + e^{-z}} \frac{1 + e^{-z}}{e^{-z}} = e^{z}$
 
 </center>
+
+## Conclusion
 
 In conclusion, we parameterized the Gamma-Poisson distribution using logits and log shape. These parameters are unrestricted, so we can ask a neural network to output logits $z$ and $\log(\alpha)$ for the Gamma-Poisson distribution. We then use Binary Cross Entropy for parts the likelihood computation, and `torch.lgamma()` functions for the rest. Voila! No more exploding gradients!
 

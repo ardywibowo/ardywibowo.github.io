@@ -134,3 +134,8 @@ cms:
 icon:
   pack:
     ai: true
+
+distill:
+  color: '#0f2e3d'
+  source_prefix: ''
+  social: []

@@ -1,0 +1,8 @@
+{{- $count := add ((.Page.Scratch.Get "distill_inline_footnote_count") | default 0) 1 -}}
+{{- .Page.Scratch.Set "distill_inline_footnote_count" $count -}}
+{{- $html := .Inner | markdownify -}}
+{{- $tooltip := .Inner | markdownify | plainify | htmlUnescape -}}
+{{- $footnotes := .Page.Scratch.Get "distill_footnotes" | default (slice) -}}
+{{- $footnotes = $footnotes | append (dict "index" $count "html" $html) -}}
+{{- .Page.Scratch.Set "distill_footnotes" $footnotes -}}
+<sup id="fnref-{{ $count }}" class="distill-inline-footnote" tabindex="0" data-footnote="{{ $tooltip }}"><a href="#fn-{{ $count }}">[{{ $count }}]</a></sup>

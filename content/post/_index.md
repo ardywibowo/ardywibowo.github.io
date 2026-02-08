@@ -2,6 +2,10 @@
 title: Posts
 cms_exclude: true
 
+cascade:
+  listrender: true
+  toc: true
+
 # View.
 #   1 = List
 #   2 = Compact

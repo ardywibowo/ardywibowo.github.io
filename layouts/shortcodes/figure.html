@@ -1,0 +1,19 @@
+{{- $src := .Get "src" | default (.Get 0) | default "" -}}
+{{- $src = printf "%v" $src -}}
+{{- $alt := .Get "alt" | default "" -}}
+{{- $caption := .Get "caption" | default "" -}}
+{{- $layoutClass := .Get "class" | default "l-body" -}}
+{{- $resource := .Page.Resources.GetMatch $src -}}
+{{- $url := $src -}}
+{{- if $resource -}}
+  {{- $url = $resource.RelPermalink -}}
+{{- end -}}
+
+{{- if $url -}}
+<figure class="{{ $layoutClass }}">
+  <img src="{{ $url }}" alt="{{ $alt }}">
+  {{- with $caption -}}
+  <figcaption>{{ . | markdownify }}</figcaption>
+  {{- end -}}
+</figure>
+{{- end -}}

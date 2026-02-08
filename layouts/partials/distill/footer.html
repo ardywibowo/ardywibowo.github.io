@@ -1,0 +1,53 @@
+{{- $brandColor := .Site.Params.distill.color | default "#0f2e3d" -}}
+<dt-footer>
+  <style>
+    dt-footer .l-page {
+      display: block;
+      color: rgba(255, 255, 255, 0.4);
+      font-weight: 300;
+      padding: 2em 1em;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      background-color: {{ $brandColor }};
+      text-align: center;
+    }
+
+    dt-footer .nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0.5em 0 1em;
+      gap: 0.3em;
+    }
+
+    dt-footer .nav a {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    dt-footer .nav a i {
+      font-size: 1.3em;
+      color: rgba(255, 255, 255, 0.85);
+      margin: 0.25em;
+    }
+
+    dt-footer .footer-close p {
+      margin: 0.2em 0;
+    }
+
+    dt-footer .footer-close a {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.85);
+    }
+  </style>
+
+  <div class="l-page">
+    <div class="nav">
+      {{ partial "distill/social" . }}
+    </div>
+
+    <div class="footer-close">
+      <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}</p>
+      <p><a href="/">Back to Home</a></p>
+    </div>
+  </div>
+</dt-footer>

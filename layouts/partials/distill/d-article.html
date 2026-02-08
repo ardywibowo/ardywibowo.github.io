@@ -1,0 +1,15 @@
+{{ if .Params.disableByline }}
+<style>
+  d-byline {
+    visibility: hidden;
+    height: 0;
+    padding: 0;
+    min-height: 0;
+  }
+</style>
+{{ end }}
+<d-article>
+  <div class="distill-content">
+    {{ .Content }}
+  </div>
+</d-article>

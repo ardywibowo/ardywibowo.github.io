@@ -1,0 +1,33 @@
+{{- $appendixFile := .Params.distill.supportFiles.appendix | default "appendix.html" -}}
+{{- $bibliographyFile := .Params.distill.supportFiles.bibliography | default "refs.bib" -}}
+{{- $appendixPath := "" -}}
+{{- $bibliographyPath := "" -}}
+{{- with .File -}}
+  {{- $appendixPath = printf "%s%s" .Dir $appendixFile -}}
+  {{- $bibliographyPath = printf "%s%s" .Dir $bibliographyFile -}}
+{{- end -}}
+
+<d-appendix>
+  {{ if and $appendixPath (fileExists $appendixPath) }}
+    {{ readFile $appendixPath | safeHTML | markdownify }}
+  {{ end }}
+
+  {{- $sourcePrefix := .Site.Params.distill.sourcePrefix
+    | default .Site.Params.distill.source_prefix
+    | default .Site.Params.sourcePrefix
+    | default .Site.Params.source_prefix
+  -}}
+  {{ if $sourcePrefix }}
+    {{ $srcFileURL := printf "%s/content/%s" $sourcePrefix .File.Dir }}
+    <h3>Updates and Corrections</h3>
+    <p>If you see mistakes or want to suggest changes, please create issues or revisions against
+      <a target="_blank" rel="noopener noreferrer" href="{{ $srcFileURL }}">source</a>.
+    </p>
+  {{ end }}
+
+  <d-footnote-list></d-footnote-list>
+
+  {{ if and $bibliographyPath (fileExists $bibliographyPath) }}
+    <d-bibliography src="{{ .RelPermalink }}{{ $bibliographyFile }}"></d-bibliography>
+  {{ end }}
+</d-appendix>

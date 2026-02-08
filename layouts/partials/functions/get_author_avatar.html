@@ -1,0 +1,12 @@
+{{/* Resolve an author's avatar image, honoring `avatar_filename` when set. */}}
+{{- $page := . -}}
+{{- $images := $page.Resources.ByType "image" -}}
+{{- $avatar := $images.GetMatch "*avatar*" -}}
+
+{{- with $page.Params.avatar_filename -}}
+  {{- with $images.GetMatch . -}}
+    {{- $avatar = . -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return $avatar -}}

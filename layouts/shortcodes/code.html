@@ -1,0 +1,8 @@
+{{- $language := .Get "language" | default (.Get 0) | default "" -}}
+{{- $block := eq (printf "%v" (.Get "block")) "true" -}}
+{{- $content := trim .Inner " \t\r\n" -}}
+{{- if $block -}}
+<pre><code{{ with $language }} class="language-{{ . }}"{{ end }}>{{ $content | htmlEscape }}</code></pre>
+{{- else -}}
+<code{{ with $language }} class="language-{{ . }}"{{ end }}>{{ $content | htmlEscape }}</code>
+{{- end -}}

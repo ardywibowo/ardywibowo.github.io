@@ -1,0 +1,7 @@
+{{- $block := eq (printf "%v" (.Get "block")) "true" -}}
+{{- $expr := trim .Inner " \t\r\n" -}}
+{{- if $block -}}
+<div class="distill-math-block">\[{{ $expr }}\]</div>
+{{- else -}}
+\({{ $expr }}\)
+{{- end -}}

@@ -1,0 +1,6 @@
+{{- $social := .Site.Params.distill.social | default .Site.Params.social -}}
+{{- range $social -}}
+<a target="_blank" rel="noopener noreferrer" href="{{ safeURL .url }}">
+  <i class="{{ .class }}" aria-hidden="true"></i>
+</a>
+{{- end -}}

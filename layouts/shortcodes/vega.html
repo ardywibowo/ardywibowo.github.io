@@ -1,0 +1,79 @@
+{{- $id := .Get "id" -}}
+{{- $rawSpec := .Get "spec" | default (.Get 1) -}}
+{{- $spec := printf "%v" $rawSpec -}}
+{{- $layoutClass := .Get "class" | default "l-body" -}}
+{{- $caption := .Get "caption" | default "" -}}
+
+{{- if and $id $spec -}}
+<div class="distill-vega-block {{ $layoutClass }}">
+  <div id="{{ $id }}"></div>
+  {{- with $caption -}}
+  <p class="figcaption">{{ . | markdownify }}</p>
+  {{- end -}}
+</div>
+<script type="text/javascript">
+  (function() {
+    let spec = {{ $spec | jsonify }};
+    if (typeof spec === 'string') {
+      spec = spec.trim();
+      // Hugo may preserve wrapped quotes for named shortcode params.
+      for (let i = 0; i < 2; i++) {
+        const wrappedWithDouble = spec.startsWith('"') && spec.endsWith('"');
+        const wrappedWithSingle = spec.startsWith("'") && spec.endsWith("'");
+        if (wrappedWithDouble || wrappedWithSingle) {
+          spec = spec.slice(1, -1).trim();
+        }
+      }
+    }
+
+    function renderVega() {
+      window.vegaEmbed('#{{ $id }}', spec, { actions: true, renderer: 'canvas' }).catch(function(err) {
+        console.error('Vega embed failed for {{ $id }}', err);
+      });
+    }
+
+    function loadScript(src) {
+      return new Promise(function(resolve, reject) {
+        const selector = 'script[data-vega-src="' + src + '"]';
+        const existing = document.querySelector(selector);
+        if (existing) {
+          if (existing.dataset.loaded === 'true') {
+            resolve();
+            return;
+          }
+          existing.addEventListener('load', function() { resolve(); }, { once: true });
+          existing.addEventListener('error', function() { reject(new Error('Failed to load ' + src)); }, { once: true });
+          return;
+        }
+        const script = document.createElement('script');
+        script.src = src;
+        script.async = true;
+        script.dataset.vegaSrc = src;
+        script.addEventListener('load', function() {
+          script.dataset.loaded = 'true';
+          resolve();
+        }, { once: true });
+        script.addEventListener('error', function() {
+          reject(new Error('Failed to load ' + src));
+        }, { once: true });
+        document.head.appendChild(script);
+      });
+    }
+
+    if (window.vegaEmbed) {
+      renderVega();
+      return;
+    }
+
+    if (!window.__vegaLoaderPromise) {
+      window.__vegaLoaderPromise = loadScript('https://cdn.jsdelivr.net/npm/vega@5')
+        .then(function() { return loadScript('https://cdn.jsdelivr.net/npm/vega-lite@5'); })
+        .then(function() { return loadScript('https://cdn.jsdelivr.net/npm/vega-embed@6'); });
+    }
+
+    window.__vegaLoaderPromise.then(renderVega).catch(function(err) {
+      console.error('Vega library load failed', err);
+    });
+  })();
+</script>
+{{- end -}}

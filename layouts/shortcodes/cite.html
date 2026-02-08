@@ -1,0 +1,37 @@
+{{- $page := .Page -}}
+{{- $rawKeys := .Get "key" | default (.Get "bib") | default (.Get 0) | default "" -}}
+{{- $rawKeys = printf "%v" $rawKeys -}}
+{{- $keys := slice -}}
+
+{{- range (split $rawKeys ",") -}}
+  {{- $k := trim . " \t\r\n" -}}
+  {{- if $k -}}
+    {{- $keys = $keys | append $k -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if gt (len $keys) 0 -}}
+  {{- $order := $page.Scratch.Get "distill_cite_order" | default (slice) -}}
+  {{- range $keys -}}
+    {{- if not (in $order .) -}}
+      {{- $order = $order | append . -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $page.Scratch.Set "distill_cite_order" $order -}}
+
+  {{- $numbers := slice -}}
+  {{- range $keys -}}
+    {{- $key := . -}}
+    {{- range $i, $k := $order -}}
+      {{- if eq $k $key -}}
+        {{- $numbers = $numbers | append (printf "%d" (add $i 1)) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- $label := .Get "label" | default (.Get "text") | default (delimit $numbers ", ") -}}
+  {{- $firstKey := index $keys 0 -}}
+  <sup class="distill-cite">
+    <a class="distill-cite-link" href="#ref-{{ $firstKey | urlize }}">[{{ $label }}]</a>
+  </sup>
+{{- end -}}

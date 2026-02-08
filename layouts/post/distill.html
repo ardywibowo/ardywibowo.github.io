@@ -1,0 +1,195 @@
+{{- define "main" -}}
+
+<article class="article">
+
+  {{ partial "page_header" . }}
+
+  <style>
+    .article-distill-shell {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .article-distill-shell d-title,
+    .article-distill-shell d-article,
+    .article-distill-shell d-appendix {
+      display: block;
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .article-distill-shell d-title {
+      padding: 0 20px 1rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      margin-bottom: 1.5rem;
+    }
+
+    .article-distill-shell d-title h1 {
+      font-size: 2rem;
+      line-height: 1.2;
+      margin: 0 0 0.35rem;
+    }
+
+    .article-distill-shell d-title p {
+      margin: 0;
+      color: rgba(0, 0, 0, 0.62);
+    }
+
+    .article-distill-shell d-article {
+      padding: 0 20px;
+    }
+
+    .article-distill-shell d-article .distill-content {
+      width: 100%;
+      font-size: 1.06rem;
+      line-height: 1.75;
+      color: rgba(0, 0, 0, 0.82);
+    }
+
+    .article-distill-shell d-article .distill-content h2 {
+      margin: 2rem 0 1rem;
+      font-size: 1.7rem;
+      line-height: 1.25;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding-bottom: 0.65rem;
+    }
+
+    .article-distill-shell d-article .distill-content h3 {
+      margin: 1.5rem 0 0.6rem;
+      font-size: 1.2rem;
+      line-height: 1.35;
+    }
+
+    .article-distill-shell d-article .distill-content img,
+    .article-distill-shell d-article .distill-content video,
+    .article-distill-shell d-article .distill-content iframe {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 1.2rem auto;
+      object-fit: contain;
+    }
+
+    .article-distill-shell d-article .distill-content p img {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .article-distill-shell d-article .distill-content table {
+      width: 100%;
+      margin: 1.2rem 0;
+      display: block;
+      overflow-x: auto;
+      border-collapse: collapse;
+    }
+
+    .article-distill-shell d-article .distill-content table th,
+    .article-distill-shell d-article .distill-content table td {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+      padding: 0.45rem 0.55rem;
+      white-space: nowrap;
+    }
+
+    .article-distill-shell d-article .distill-content pre {
+      overflow-x: auto;
+      padding: 0.9rem;
+      border-radius: 0.35rem;
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    .article-distill-shell d-article .distill-content p,
+    .article-distill-shell d-article .distill-content ul,
+    .article-distill-shell d-article .distill-content ol {
+      margin-bottom: 1rem;
+    }
+
+    .article-distill-shell d-article .distill-content ul,
+    .article-distill-shell d-article .distill-content ol {
+      padding-left: 1.3rem;
+    }
+
+    .article-distill-shell d-appendix {
+      padding: 1rem 20px 0;
+    }
+
+    .article-distill-shell .distill-toc-wrap {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto 1rem;
+      padding: 0 20px;
+    }
+
+    .article-distill-shell .distill-toc {
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      border-radius: 8px;
+      padding: 0.9rem 1rem;
+      background: rgba(0, 0, 0, 0.015);
+    }
+
+    .article-distill-shell .distill-toc h3 {
+      margin: 0 0 0.6rem;
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .article-distill-shell .distill-toc #TableOfContents {
+      border-left: 0;
+      padding-left: 0;
+    }
+
+    .article-distill-shell .distill-toc #TableOfContents ul {
+      margin: 0;
+      padding-left: 1rem;
+      list-style: disc;
+    }
+
+    .article-distill-shell .distill-toc #TableOfContents li {
+      margin: 0.2rem 0;
+    }
+
+    .article-distill-shell .distill-toc #TableOfContents a {
+      font-size: 0.92rem;
+      text-decoration: none;
+    }
+  </style>
+
+  <div class="article-distill-shell">
+    <script src="https://distill.pub/template.v2.js"></script>
+
+    {{- if .Params.vega -}}
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    {{- end -}}
+
+    {{ partial "distill/d-front-matter" . }}
+
+    {{- $dtitleFile := .Params.distill.supportFiles.dtitle | default "dtitle.html" -}}
+    {{- $dtitlePath := "" -}}
+    {{- with .File -}}
+      {{- $dtitlePath = printf "%s%s" .Dir $dtitleFile -}}
+    {{- end -}}
+    {{- if and $dtitlePath (fileExists $dtitlePath) -}}
+      {{ partial "distill/d-title" . }}
+    {{- end -}}
+
+    {{- if and (.Params.distill.toc) (gt (len .TableOfContents) 0) -}}
+    <div class="distill-toc-wrap">
+      <div class="distill-toc">
+        <h3>Contents</h3>
+        {{ .TableOfContents }}
+      </div>
+    </div>
+    {{- end -}}
+
+    {{ partial "distill/d-article" . }}
+    {{ partial "distill/d-appendix" . }}
+  </div>
+
+  <div class="article-container">
+    {{ partial "page_footer" . }}
+  </div>
+</article>
+
+{{- end -}}

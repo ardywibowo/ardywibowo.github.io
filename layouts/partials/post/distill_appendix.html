@@ -1,0 +1,72 @@
+{{- $page := . -}}
+{{- $refs := $page.Params.references | default (slice) -}}
+{{- $footnotes := $page.Scratch.Get "distill_footnotes" | default (slice) -}}
+
+{{- $refByID := dict -}}
+{{- range $refs -}}
+  {{- $id := printf "%v" (.id | default .key | default "") -}}
+  {{- if $id -}}
+    {{- $refByID = merge $refByID (dict $id .) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $citationOrder := $page.Scratch.Get "distill_cite_order" | default (slice) -}}
+{{- $orderedIDs := slice -}}
+{{- range $citationOrder -}}
+  {{- $id := printf "%v" . -}}
+  {{- if index $refByID $id -}}
+    {{- $orderedIDs = $orderedIDs | append $id -}}
+  {{- end -}}
+{{- end -}}
+{{- range $refs -}}
+  {{- $id := printf "%v" (.id | default .key | default "") -}}
+  {{- if and $id (not (in $orderedIDs $id)) -}}
+    {{- $orderedIDs = $orderedIDs | append $id -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $hasFootnotes := gt (len $footnotes) 0 -}}
+{{- $hasReferences := gt (len $orderedIDs) 0 -}}
+
+{{- if or $hasFootnotes $hasReferences -}}
+<d-appendix class="distill-appendix">
+  {{- if $hasFootnotes -}}
+  <section class="distill-footnote-list">
+    <h3 id="footnotes">Footnotes</h3>
+    <ol>
+      {{- range $footnotes -}}
+      <li id="fn-{{ .index }}">
+        {{- .html | safeHTML -}}
+        <a class="footnote-backlink" href="#fnref-{{ .index }}" aria-label="Back to footnote {{ .index }}">[↩]</a>
+      </li>
+      {{- end -}}
+    </ol>
+  </section>
+  {{- end -}}
+
+  {{- if $hasReferences -}}
+  <section class="distill-citation-list">
+    <h3 id="references">References</h3>
+    <ol class="references">
+      {{- range $orderedIDs -}}
+        {{- $id := . -}}
+        {{- with index $refByID $id -}}
+        {{- $authors := .authors | default "" -}}
+        {{- $year := .year | default "" -}}
+        <li id="ref-{{ $id | urlize }}">
+          {{- with .title -}}<span class="title">{{ . }}</span>{{- end -}}
+          {{- with .url -}} <a href="{{ . }}" target="_blank" rel="noopener noreferrer">[link]</a>{{- end -}}
+          <br>
+          {{- with $authors -}}<span class="authors">{{ . }}</span>{{- end -}}
+          {{- if and $authors $year -}}, {{- end -}}
+          {{- with $year -}}<span class="year">{{ . }}</span>. {{- else -}}{{ if $authors }}. {{ end -}}{{- end -}}
+          {{- with .venue -}}<span class="venue">{{ . }}</span>. {{- end -}}
+          {{- with .doi -}}<a href="https://doi.org/{{ . }}" target="_blank" rel="noopener noreferrer">DOI: {{ . }}</a>.{{- end -}}
+        </li>
+        {{- end -}}
+      {{- end -}}
+    </ol>
+  </section>
+  {{- end -}}
+</d-appendix>
+{{- end -}}
