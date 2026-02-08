@@ -766,3 +766,23 @@ d-appendix.distill-appendix .distill-citation-list .venue {
     margin-bottom: 0.8rem;
   }
 }
+
+/* Compact footer spacing after removing the Wowchemy credit line. */
+footer.site-footer {
+  margin-top: 2rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.45rem;
+}
+
+footer.site-footer p,
+footer.site-footer .powered-by {
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+  line-height: 1.35;
+}
+
+footer.site-footer p.powered-by {
+  margin-top: 0.05rem;
+  margin-bottom: 0.05rem;
+  line-height: 1.2;
+}

@@ -22,15 +22,15 @@ twitter: ''
 
 email: ardywibowo.randy@gmail.com
 address:
-  street: One Apple Park Way
-  city: Cupertino
+  street: ''
+  city: San Francisco
   region: CA
-  postcode: '95014'
+  postcode: ''
   country: United States
   country_code: US
 coordinates:
-  latitude: '37.3346'
-  longitude: '-122.0090'
+  latitude: '37.7749'
+  longitude: '-122.4194'
 directions:
 
 # Site header
@@ -121,7 +121,7 @@ search:
 map:
   provider: mapnik
   api_key: ''
-  zoom: 15
+  zoom: 12
 marketing:
   google_analytics: ''
   google_tag_manager: ''
