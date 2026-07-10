@@ -1,7 +1,7 @@
 +++
 title = "End-to-End Multi-Agent Reinforcement Learning"
 subtitle = "An entire multi-agent trace is one RL sample."
-date = "2026-07-10T00:00:00.000Z"
+date = "2026-04-27T00:00:00.000Z"
 summary = "A trace-level view of reinforcement learning for multi-agent, tool-using, and compacted language-model systems."
 draft = false
 featured = false
