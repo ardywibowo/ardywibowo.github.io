@@ -113,6 +113,13 @@ The constant {{< math >}}\log Z(x,c){{< /math >}} does not affect the policy-gra
 {{< math block=true >}}
 \mathbb{E}_{\tau \sim \pi_S}
 \left[
+\log Z(x,c)
+\nabla \log \pi_S(\tau \mid x)
+\right]
+=
+\log Z(x,c)
+\mathbb{E}_{\tau \sim \pi_S}
+\left[
 \nabla \log \pi_S(\tau \mid x)
 \right]
 =
