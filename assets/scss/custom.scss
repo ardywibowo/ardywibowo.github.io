@@ -153,15 +153,19 @@ h6,
 }
 
 .home-section {
-  padding: 72px 0;
+  padding: 40px 0;
 }
 
 .home-section:first-of-type {
-  padding-top: 56px;
+  padding-top: 36px;
 }
 
 #about.home-section {
-  padding-bottom: 80px;
+  padding-bottom: 48px;
+}
+
+.home-section.wg-pages .section-heading.mb-3 {
+  margin-bottom: 40px !important;
 }
 
 .home-section .section-heading h1,
@@ -737,11 +741,14 @@ d-appendix.distill-appendix .distill-citation-list .venue {
 }
 
 .distill-post-toc-mobile {
+  max-width: var(--distill-body-width);
   margin: 0 0 1.1rem;
   border: 1px solid var(--distill-border);
   border-radius: 0.35rem;
   padding: 0.55rem 0.8rem;
   background: var(--distill-surface);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .distill-post-toc-mobile summary {
@@ -917,12 +924,12 @@ d-appendix.distill-appendix .distill-citation-list .venue {
   }
 
   .home-section {
-    padding: 48px 0;
+    padding: 36px 0;
   }
 
   #about.home-section {
-    padding-top: 40px;
-    padding-bottom: 56px;
+    padding-top: 32px;
+    padding-bottom: 44px;
   }
 
   .article-post .article-container.pt-3 {
