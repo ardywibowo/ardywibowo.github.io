@@ -1,6 +1,6 @@
 +++
 title = "On the Optimal Teacher for On-Policy (Self-)Distillation"
-subtitle = "Deriving the Optimal Teacher Policy"
+subtitle = "A Good Teacher Meets the Student Where They Are"
 date = "2026-07-09T00:00:00.000Z"
 summary = "A short derivation of the teacher objective induced by asking OPD to match a plain RL policy-gradient update."
 draft = false
