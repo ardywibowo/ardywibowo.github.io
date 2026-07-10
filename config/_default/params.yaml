@@ -84,7 +84,8 @@ copyright_license:
   allow_commercial: false
   notice: 'This work is licensed under {license}'
 abstract_length: 135
-plugins_js: []
+plugins_js:
+  - theme-cycle
 avatar:
   gravatar: false
   shape: circle
