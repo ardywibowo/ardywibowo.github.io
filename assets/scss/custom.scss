@@ -570,6 +570,35 @@ d-byline.distill-post-byline p.author {
   color: var(--distill-fg);
 }
 
+@media screen and (min-width: 58em) {
+  .article-post .article-container.pt-3 h1 {
+    font-size: clamp(2rem, 4.2vw, 2.75rem);
+  }
+
+  .article-post .article-container.pt-3 .page-subtitle,
+  .distill-post-main .article-style {
+    font-size: 1.05rem;
+  }
+
+  .distill-post-main .article-style {
+    line-height: 1.68;
+  }
+
+  .distill-post-main .article-style h2 {
+    font-size: 2rem;
+  }
+
+  .distill-post-main .article-style h3 {
+    font-size: 1.45rem;
+  }
+
+  .distill-post-main .article-style h4,
+  .distill-post-main .article-style h5,
+  .distill-post-main .article-style h6 {
+    font-size: 1.08rem;
+  }
+}
+
 .distill-post-main .article-style a {
   color: inherit;
   border-bottom: 1px solid var(--distill-border);
