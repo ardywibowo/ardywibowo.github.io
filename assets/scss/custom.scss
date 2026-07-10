@@ -331,6 +331,21 @@ body.dark .distill-inline-footnote > a {
   overflow-x: auto;
 }
 
+.distill-post-main .article-style mjx-container {
+  font-size: 1em !important;
+}
+
+@media (min-width: 768px) {
+  .distill-post-main .article-style .distill-math-block {
+    overflow-x: visible;
+  }
+
+  .distill-post-main .article-style .distill-math-block mjx-container[display="true"] {
+    min-width: 100%;
+    width: max-content;
+  }
+}
+
 body.dark .distill-post-main .article-style,
 body.dark .distill-post-main .article-style .distill-math-block,
 body.dark .distill-post-main .article-style mjx-container {
