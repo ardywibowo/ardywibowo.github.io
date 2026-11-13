@@ -13,6 +13,8 @@
   --distill-compact-sans: var(--distill-sans);
   --distill-serif: "Anthropic Serif", Georgia, "Times New Roman", serif;
   --distill-mono: "Anthropic Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --site-link: #555;
+  --site-link-hover: #222;
   --distill-body-width: 704px;
   --distill-page-width: 1000px;
   --distill-page-outset-width: 1220px;
@@ -20,6 +22,8 @@
 }
 
 body.dark {
+  --site-link: #c5c5c5;
+  --site-link-hover: #f2f2f2;
   --distill-bg: #171717;
   --distill-bg-soft: #1d1d1d;
   --distill-bg-elevated: #232323;
@@ -150,6 +154,19 @@ h6,
   font-family: var(--distill-sans);
 }
 
+// Underlines keep inline links recognizable in the neutral palette.
+.article-style p a:not(.btn),
+.article-style li a:not(.btn) {
+  text-decoration: underline;
+  text-decoration-color: var(--distill-border);
+  text-underline-offset: 0.15em;
+}
+
+.article-style p a:hover,
+.article-style li a:hover {
+  text-decoration-color: currentColor;
+}
+
 .navbar-brand {
   font-size: 1.2rem;
   line-height: 1.5;
@@ -251,19 +268,19 @@ h6,
 }
 
 .distill-cite-link {
-  color: rgba(102, 104, 136, 0.95);
+  color: var(--site-link);
   border-bottom: none;
   text-decoration: none;
   font-size: 75%;
 }
 
 body.dark .distill-cite-link {
-  color: rgba(176, 183, 232, 0.95);
+  color: var(--site-link);
 }
 
 .distill-cite-link:hover,
 .distill-cite-link:focus {
-  color: $sta-primary;
+  color: var(--site-link-hover);
   border-bottom: none;
   text-decoration: none;
 }
@@ -278,19 +295,19 @@ body.dark .distill-cite-link {
 }
 
 .distill-inline-footnote > a {
-  color: rgba(102, 104, 136, 0.95);
+  color: var(--site-link);
   border-bottom: none;
   text-decoration: none;
   font-size: 75%;
 }
 
 body.dark .distill-inline-footnote > a {
-  color: rgba(176, 183, 232, 0.95);
+  color: var(--site-link);
 }
 
 .distill-inline-footnote > a:hover,
 .distill-inline-footnote > a:focus {
-  color: $sta-primary;
+  color: var(--site-link-hover);
   border-bottom: none;
   text-decoration: none;
 }
@@ -807,7 +824,7 @@ d-appendix.distill-appendix .footnote-backlink {
 
 d-appendix.distill-appendix .footnote-backlink:hover,
 d-appendix.distill-appendix .footnote-backlink:focus {
-  color: $sta-primary;
+  color: var(--site-link-hover);
   border-bottom: none;
 }
 
@@ -924,11 +941,14 @@ d-appendix.distill-appendix .distill-citation-list .venue {
   }
 
   d-toc.distill-post-dtoc #TableOfContents li {
-    margin: 0.18rem 0;
+    margin: 0;
   }
 
   d-toc.distill-post-dtoc #TableOfContents a {
     display: block;
+    // Match Nathan's quarter-rem padding using the post's 17px font scale.
+    padding-top: calc(var(--post-font-size, 17px) * 0.25);
+    padding-bottom: calc(var(--post-font-size, 17px) * 0.25);
     font-size: 0.79rem;
     line-height: 1.28;
     border-bottom: none;
@@ -943,7 +963,7 @@ d-appendix.distill-appendix .distill-citation-list .venue {
 
   d-toc.distill-post-dtoc #TableOfContents li a:hover,
   d-toc.distill-post-dtoc #TableOfContents li a.active {
-    color: $sta-primary;
+    color: var(--site-link-hover);
   }
 
   .distill-post-grid.has-toc .distill-post-main .article-style .l-page,
@@ -1132,3 +1152,181 @@ body.dark .article-style .algorithm-box {
   border-left-color: $sta-primary;
   background: rgba(255, 255, 255, 0.035);
 }
+
+// Typography from https://nathan.rs/posts/detllm/ is limited to /post/ pages.
+// Use a local scale because the rest of the theme has a different root size.
+.posts-section {
+  --distill-serif: Palatino, Georgia, serif;
+  --distill-sans: var(--distill-serif);
+  --distill-compact-sans: var(--distill-serif);
+  --distill-mono: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono",
+    Menlo, monospace;
+  --post-font-size: 17px;
+  --post-body-font-size: calc(var(--post-font-size) + 1px);
+  --post-font-smaller: calc(var(--post-font-size) * 0.875);
+  --post-font-smallest: calc(var(--post-font-size) * 0.75);
+  --post-title-size: clamp(calc(var(--post-font-size) * 1.5), 3vw, calc(var(--post-font-size) * 2));
+
+  font-family: var(--distill-serif);
+  font-size: var(--post-font-size);
+  font-weight: 400;
+  line-height: 1.6;
+
+  .section-subheading,
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: inherit;
+  }
+
+  .media.stream-item .article-style,
+  .article-style,
+  .article-style p,
+  .article-style li,
+  .article-style blockquote,
+  .article-style th,
+  .article-style td {
+    font-size: var(--post-font-size);
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--distill-serif);
+    font-weight: 400;
+  }
+
+  .section-heading h1,
+  .section-heading h2,
+  .universal-wrapper > h1,
+  .article-container.pt-3 h1,
+  .article-distill-shell d-title h1 {
+    font-size: var(--post-title-size);
+    font-weight: 400;
+    line-height: 1.08;
+  }
+
+  .article-container.pt-3 .page-subtitle {
+    font-size: clamp(var(--post-font-size), 1.6vw, calc(var(--post-font-size) * 1.15));
+    line-height: 1.5;
+  }
+
+  .media.stream-item .article-title,
+  .media.stream-item .article-title a,
+  .article-title,
+  .article-title a {
+    font-size: calc(var(--post-font-size) * 1.25) !important;
+    font-weight: 400;
+    line-height: 1.25 !important;
+  }
+
+  .article-style,
+  .article-distill-shell d-article .distill-content {
+    font-size: var(--post-font-size);
+    line-height: 1.6;
+
+    h1 { font-size: calc(var(--post-font-size) * 2.5); line-height: 1.15; }
+    h2 { font-size: calc(var(--post-font-size) * 1.6); }
+    h3 { font-size: calc(var(--post-font-size) * 1.25); }
+    h4 { font-size: calc(var(--post-font-size) * 1.125); }
+    h5 { font-size: var(--post-font-size); }
+    h6 { font-size: var(--post-font-smaller); }
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    code {
+      font-size: var(--post-font-smaller);
+      font-weight: 400;
+    }
+
+    pre {
+      font-size: var(--post-font-size);
+      line-height: 1.6;
+    }
+
+    pre code {
+      font-size: var(--post-font-smallest);
+      line-height: 1.6;
+    }
+
+    figure figcaption,
+    .distill-vega-block .figcaption {
+      font-size: var(--post-font-smallest);
+      line-height: 1.5;
+    }
+  }
+
+  code,
+  kbd,
+  samp,
+  pre {
+    font-family: var(--distill-mono);
+  }
+
+  // Slightly larger reading text for this site's wider article column.
+  .article-post .article-style,
+  .article-distill-shell d-article .distill-content {
+    font-size: var(--post-body-font-size);
+
+    p,
+    li,
+    blockquote,
+    th,
+    td {
+      font-size: inherit;
+    }
+  }
+
+  .article-metadata,
+  d-byline.distill-post-byline {
+    font-size: var(--post-font-smaller);
+    line-height: 1.6;
+  }
+
+  d-byline.distill-post-byline h3,
+  .distill-post-toc-mobile,
+  .distill-post-toc-mobile #TableOfContentsMobile a,
+  d-toc.distill-post-dtoc h2,
+  d-toc.distill-post-dtoc #TableOfContents a,
+  d-appendix.distill-appendix,
+  d-appendix.distill-appendix li {
+    font-size: var(--post-font-smallest);
+    line-height: 1.6;
+  }
+
+  d-byline.distill-post-byline p.author,
+  d-toc.distill-post-dtoc h2,
+  d-toc.distill-post-dtoc #TableOfContents > ul > li > a {
+    font-weight: 400;
+  }
+
+  d-toc.distill-post-dtoc #TableOfContents li a.active {
+    font-weight: 700;
+  }
+
+  strong,
+  b {
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 600px) {
+  .posts-section {
+    --post-font-size: 15px;
+  }
+}
+
+@import "site-header";

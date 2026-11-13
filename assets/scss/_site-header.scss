@@ -1,0 +1,185 @@
+// A quiet, serif navigation bar inspired by nathan.rs.
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}
+
+#navbar-main.site-nav {
+  --header-font: Palatino, Georgia, serif;
+  --header-size: 17px;
+  --header-color: #292929;
+  --header-surface: rgba(255, 255, 255, 0.94);
+  --header-menu-surface: #fff;
+
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: var(--header-surface) !important;
+  box-shadow: none;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--header-color);
+  font-family: var(--header-font);
+
+  > .container-xl {
+    max-width: 1564px;
+    padding: 17px clamp(17px, 4vw, 34px);
+    gap: clamp(12px, 2vw, 25.5px);
+    flex-wrap: nowrap;
+  }
+
+  .navbar-brand {
+    margin: 0 auto 0 0;
+    padding: 0;
+    font-family: var(--header-font);
+    font-size: calc(var(--header-size) * 0.95);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: 0.08em;
+    color: var(--header-color) !important;
+    white-space: nowrap;
+  }
+
+  .navbar-brand img {
+    max-height: 24px;
+    height: auto;
+  }
+
+  .main-menu-item {
+    flex-grow: 0;
+  }
+
+  .main-menu-item > .navbar-nav {
+    align-items: center;
+    gap: clamp(12px, 2vw, 25.5px);
+  }
+
+  .navbar-nav .nav-link,
+  .navbar-toggler,
+  .dropdown-menu {
+    font-family: var(--header-font);
+    font-size: calc(var(--header-size) * 0.875) !important;
+    font-weight: 400 !important;
+    line-height: 1.15;
+    color: var(--header-color) !important;
+  }
+
+  .main-menu-item .nav-link {
+    padding: 0;
+    text-decoration: none;
+    text-underline-offset: 0.3em;
+    text-decoration-thickness: 1px;
+  }
+
+  .main-menu-item .nav-link:hover,
+  .main-menu-item .nav-link.active {
+    text-decoration: underline;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 1px solid currentColor !important;
+    outline-offset: 5px;
+    border-radius: 2px;
+  }
+
+  .nav-icons {
+    flex-shrink: 0;
+    align-items: center;
+    gap: 20px;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .nav-icons .nav-item {
+    padding: 0;
+  }
+
+  .nav-icons .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+  }
+
+  .theme-cycle-toggle i {
+    font-size: 13px;
+  }
+
+  .nav-icons svg,
+  .navbar-toggler svg {
+    fill: none;
+  }
+
+  .navbar-toggler {
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+body.dark #navbar-main.site-nav {
+  --header-color: #dedede;
+  --header-surface: rgba(23, 23, 23, 0.94);
+  --header-menu-surface: #171717;
+}
+
+@media (max-width: 991.98px) {
+  #navbar-main.site-nav {
+    > .container-xl {
+      gap: 16px;
+      padding-top: 13px;
+      padding-bottom: 13px;
+    }
+
+    .nav-icons {
+      gap: 12px;
+    }
+
+    .nav-icons .nav-link,
+    .navbar-toggler {
+      width: 28px;
+      height: 28px;
+    }
+
+    .navbar-toggler {
+      display: flex;
+      order: 2;
+    }
+
+    .main-menu-item {
+      top: 100%;
+      background: var(--header-menu-surface);
+      padding: 12px 20px 20px;
+      border-bottom: 1px solid var(--distill-border-soft);
+    }
+
+    .main-menu-item > .navbar-nav {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 4px 24px;
+      margin: 0;
+    }
+
+    .main-menu-item .nav-item {
+      padding: 0 !important;
+    }
+
+    .main-menu-item .nav-item .nav-link {
+      padding: 12px 0 !important;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  #navbar-main.site-nav {
+    --header-size: 15px;
+
+    > .container-xl {
+      gap: 8px;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+# Neutral palette for links, controls, and navigation.
+name = "Neutral"
+light = true
+
+primary = "#5a5a5a"
+link = "#555555"
+link_hover = "#222222"
+
+menu_primary = "#fff"
+menu_text = "#444444"
+menu_text_active = "#222222"
+menu_title = "#2b2b2b"
+
+home_section_odd = "rgb(255, 255, 255)"
+home_section_even = "rgb(247, 247, 247)"
+
+[dark]
+  link = "#c5c5c5"
+  link_hover = "#f2f2f2"

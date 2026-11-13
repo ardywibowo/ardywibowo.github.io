@@ -34,7 +34,7 @@
     {{ partial "navbar" . }}
   </div>
 
-  <div class="page-body">
+  <div class="page-body{{ if eq .Section "post" }} posts-section{{ end }}">
     {{ block "main" . }}{{ end }}
   </div>
 
