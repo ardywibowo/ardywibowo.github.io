@@ -1,4 +1,4 @@
-// A quiet, serif navigation bar inspired by nathan.rs.
+// A quiet navigation bar inspired by nathan.rs.
 .page-header {
   position: sticky;
   top: 0;
@@ -6,7 +6,7 @@
 }
 
 #navbar-main.site-nav {
-  --header-font: Palatino, Georgia, serif;
+  --header-font: var(--distill-sans);
   --header-size: 17px;
   --header-color: #292929;
   --header-surface: rgba(255, 255, 255, 0.94);

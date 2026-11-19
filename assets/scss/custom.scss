@@ -1156,18 +1156,13 @@ body.dark .article-style .algorithm-box {
 // Typography from https://nathan.rs/posts/detllm/ is limited to /post/ pages.
 // Use a local scale because the rest of the theme has a different root size.
 .posts-section {
-  --distill-serif: Palatino, Georgia, serif;
-  --distill-sans: var(--distill-serif);
-  --distill-compact-sans: var(--distill-serif);
-  --distill-mono: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono",
-    Menlo, monospace;
   --post-font-size: 17px;
   --post-body-font-size: calc(var(--post-font-size) + 1px);
   --post-font-smaller: calc(var(--post-font-size) * 0.875);
   --post-font-smallest: calc(var(--post-font-size) * 0.75);
   --post-title-size: clamp(calc(var(--post-font-size) * 1.5), 3vw, calc(var(--post-font-size) * 2));
 
-  font-family: var(--distill-serif);
+  font-family: var(--distill-sans);
   font-size: var(--post-font-size);
   font-weight: 400;
   line-height: 1.6;
@@ -1198,7 +1193,7 @@ body.dark .article-style .algorithm-box {
   h4,
   h5,
   h6 {
-    font-family: var(--distill-serif);
+    font-family: var(--distill-sans);
     font-weight: 400;
   }
 
